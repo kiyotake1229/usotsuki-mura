@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- 嘘つき村の事件簿 アプリアイコンの元データ。
+       藍の紙面に、朱の丸い判子「嘘」。角丸は付けない（OS が付ける）。
+       判子（影を含む）は中心から半径 370 以内に収め、マスク用（安全域 = 半径 409.6）でも欠けない。
+       PNG の書き出し: python3 tools/make-images.py icons -->
+  <title>嘘つき村の事件簿</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="34%" r="78%">
+      <stop offset="0" stop-color="#2C4C8C"/>
+      <stop offset=".55" stop-color="#1C3266"/>
+      <stop offset="1" stop-color="#0F1D3E"/>
+    </radialGradient>
+    <!-- 和紙の繊維（横に細かいすじ） -->
+    <filter id="washi" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".014 .16" numOctaves="3" seed="4"/>
+      <feColorMatrix values="0 0 0 0 .96  0 0 0 0 .97  0 0 0 0 .99  0 0 0 .15 -.05"/>
+    </filter>
+    <!-- 判子のかすれ（朱肉ののりむら＋縁のゆらぎ） -->
+    <filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="7" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -5 0 0 0 4.35" result="m"/>
+      <feComposite in="SourceGraphic" in2="m" operator="in" result="c"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="1" seed="3" result="w"/>
+      <feDisplacementMap in="c" in2="w" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <rect width="1024" height="1024" filter="url(#washi)"/>
+
+  <!-- 判子の影（紙に少し沈む） -->
+  <circle cx="512" cy="530" r="350" fill="#060D22" opacity=".28"/>
+
+  <!-- 朱の判子「嘘」 -->
+  <g transform="rotate(-7 512 512)" filter="url(#ink)">
+    <circle cx="512" cy="512" r="346" fill="#D3412A"/>
+    <circle cx="512" cy="512" r="300" fill="none" stroke="#FBF6F0" stroke-width="13" opacity=".86"/>
+    <text x="506" y="500" text-anchor="middle" dominant-baseline="central"
+          font-family="'Shippori Mincho B1','Hiragino Mincho ProN','Yu Mincho','YuMincho','Noto Serif JP',serif"
+          font-weight="800" font-size="408" fill="#FBF6F0">嘘</text>
+  </g>
+</svg>

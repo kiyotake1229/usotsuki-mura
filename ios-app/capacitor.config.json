@@ -1,0 +1,19 @@
+{
+  "appId": "work.ltv.usotsuki",
+  "appName": "嘘つき村の事件簿",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#E7ECF2",
+    "preferredContentMode": "mobile"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "iconColor": "#D3412A"
+    },
+    "StatusBar": {
+      "overlaysWebView": true,
+      "style": "DEFAULT"
+    }
+  }
+}

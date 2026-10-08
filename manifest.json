@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "嘘つき村の事件簿",
+  "short_name": "嘘つき村",
+  "description": "毎朝1件届く、日替わりの推理パズル。村人の証言から正直者と嘘つきを見分けて、犯人を1人当てよう。",
+  "lang": "ja",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E7ECF2",
+  "theme_color": "#E7ECF2",
+  "categories": ["games", "entertainment", "education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
