@@ -2309,6 +2309,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
   // プラグインは window.Capacitor.Plugins から使う（import しない）。無ければ Web と同じ動きに戻る
   const NATIVE = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
   const CAP = (NATIVE && window.Capacitor.Plugins) || {};
+  // iframe や sandbox の中（Claude Artifact など）。ここでは download リンクが効かない
+  const FRAMED = (() => { try { return window.self !== window.top || window.origin === 'null'; } catch (e) { return true; } })();
   const plug = (name) => (NATIVE && CAP[name]) || null;
   const quiet = (p) => { if (p && typeof p.catch === 'function') p.catch(() => {}); return p; };
 
@@ -3913,7 +3915,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       '<a class="btn btn-pri" href="' + esc(tweet) + '" target="_blank" rel="noopener noreferrer"><svg class="i fill" aria-hidden="true"><use href="#i-xlogo"/></svg>X に投稿</a>',
       osShare ? '<button class="btn" type="button" data-share="os">' + icon('i-share') + '共有…</button>' : '',
       '<button class="btn" type="button" data-share="copy">' + icon('i-copy') + '結果をコピー</button>',
-      NATIVE ? '' : '<a class="btn btn-ghost" href="' + img.dataURL + '" download="' + esc(img.name) + '">' + icon('i-down2') + '画像を保存</a>',
+      (NATIVE || FRAMED) ? '' : '<a class="btn btn-ghost" href="' + img.dataURL + '" download="' + esc(img.name) + '">' + icon('i-down2') + '画像を保存</a>',
     ].filter(Boolean);
     // ［結果に戻る］は、ほかのボタンが奇数のときは横に並べ、偶数のときは1行に広げる
     acts.push('<button class="btn btn-ghost' + (acts.length % 2 === 0 ? ' full' : '') + '" type="button" data-share="close">' + icon('i-back') + '結果に戻る</button>');

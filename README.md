@@ -5,10 +5,10 @@
 
 | 項目 | 内容 |
 |------|------|
-| 状態 | **Web版 完成（リリース前の点検済み）/ PWA 対応済み / iOS プロジェクト作成済み（Xcode でのビルド・申請はこれから）** |
-| 一般公開URL（GitHub Pages） | https://kiyotake1229.github.io/usotsuki-mura/ （公開作業中。リポジトリ kiyotake1229/usotsuki-mura） |
+| 状態 | **Web版 公開中（GitHub Pages）/ PWA 対応済み / iOS プロジェクト構築済み・ビルド確認済み（GitHub Actions。引き渡し可）** |
+| 一般公開URL（GitHub Pages） | https://kiyotake1229.github.io/usotsuki-mura/ （2026-10-08 公開。リポジトリ https://github.com/kiyotake1229/usotsuki-mura 。`index.html` を push すると数十秒で反映） |
 | サポートURL（App Store 用） | https://kiyotake1229.github.io/usotsuki-mura/support.html （プライバシーポリシーは `#privacy`） |
-| 開発確認用（Claude Artifact） | https://claude.ai/artifact/BRWf8oJikTLt1mrkdA83Di （中身は 2026-10-08 朝の版。公開し直すまで最新ではない） |
+| 開発確認用（Claude Artifact） | https://claude.ai/artifact/BRWf8oJikTLt1mrkdA83Di （2026-10-08 夜に最新の版で公開し直した） |
 | 本体 | `index.html`（約280KB・4,400行。画面・推論エンジン・似顔絵の SVG まですべて1ファイル） |
 | 通信 | 記録や操作の内容は外に送らない。外から読むのは Google Fonts の文字だけ（表示を止めずに読む。読めなくても端末の文字で表示される） |
 | データ | 端末内のみ（localStorage のキー `usotsuki.v1`。iOS アプリは Preferences にも二重に保存） |
@@ -30,6 +30,8 @@
 | #0005 | [PWA化と公開用の素材](docs/20261008_NEW_0005_PWA_PWA化と公開用の素材.md)（manifest・Service Worker・アイコン・OGP・サポートページ） |
 | #0006 | [iOSアプリ化](docs/20261008_NEW_0006_IOS_iOSアプリ化.md)（Capacitor 7・GitHub Actions のビルド確認） |
 | #0007 | [リリース前の点検で見つかった不具合の修正](docs/20261008_BUG_0007_ALL_リリース前の点検で見つかった不具合の修正.md) |
+| #0008 | [GitHub Pages で公開](docs/20261008_DPL_0008_ALL_GitHubPagesで公開.md)（公開と iOS ビルド確認の記録） |
+| #0009 | [Artifact の中では「画像を保存」を出さない](docs/20261008_FIX_0009_APP_Artifactの中では画像を保存を出さない.md) |
 
 機能追加・バグ修正・改善をしたら、1件ごとに文書を足して `bash docs/manager/generate_docs_json.sh` を実行する。
 
@@ -114,12 +116,13 @@ Claude がブラウザで触るときは、先に音を消す（[../_テンプ�
 
 ## 残作業
 
-- [x] Claude Artifact で公開（2026-10-08。最新の版での公開し直しはまだ）
+- [x] Claude Artifact で公開（2026-10-08。夜に最新の版で公開し直した）
 - [x] PWA化（`manifest.json` / `sw.js` / アイコン）
 - [x] 9人の問題（難問）
 - [x] iOS化（`ios-app/`。Capacitor 7。Bundle ID `work.ltv.usotsuki`）とネイティブ機能（通知・触覚・共有・二重保存）
 - [x] App Store 用スクリーンショット（`ios-app/screenshots/`）と `ios-app/岩崎さんへの引き渡し手順.md`
-- [ ] GitHub Pages で公開（リポジトリ kiyotake1229/usotsuki-mura）。公開後に support.html が開けること、Actions の「iOS build check」が緑になることを確かめる
+- [x] GitHub Pages で公開（2026-10-08。リポジトリ kiyotake1229/usotsuki-mura。support.html も公開）
+- [x] iOS ビルド確認（GitHub Actions の macOS ランナーでシミュレータ向け・実機向けとも BUILD SUCCEEDED。手元に Xcode が無いため。#0008）
 - [ ] お問い合わせ先: 今は GitHub の Issues だけ。App Store の審査に備えて、問い合わせ用のメールアドレスを support.html に足すか決める
 - [ ] 公開リポジトリに docs/ と引き渡し手順を入れてよいか決める（GitHub Pages では `_config.yml` で隠してあるが、github.com のリポジトリでは読める）
 - [ ] スマホ実機（iPhone / Android）で確認。特に戻るスワイプ・Web Share・ホーム画面に追加・オフライン

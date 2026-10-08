@@ -1,8 +1,28 @@
 {
-  "next_no": 8,
-  "total": 7,
-  "generated_at": "2026-10-08T20:31:32.398843",
+  "next_no": 10,
+  "total": 9,
+  "generated_at": "2026-10-08T20:37:08.588181",
   "documents": [
+    {
+      "no": 9,
+      "date": "2026-10-08",
+      "type": "FIX",
+      "category": "APP",
+      "title": "Artifactの中では画像を保存を出さない",
+      "filename": "20261008_FIX_0009_APP_Artifactの中では画像を保存を出さない.md",
+      "extension": "md",
+      "summary": "結果の画像の画面にある［画像を保存］は、`<a download>` のリンクで画像を保存する。Claude Artifact の中（iframe・sandbox）ではこのリンクが働かず、押しても何も起きない。Artifact の中ではこのボタンを出さないようにした。GitHub Pages・ホーム画面に追加したアプリ・PC のブラウザでは、これまでどおり出る。画像の長押し（PC は右クリック）で"
+    },
+    {
+      "no": 8,
+      "date": "2026-10-08",
+      "type": "DPL",
+      "category": "ALL",
+      "title": "GitHubPagesで公開",
+      "filename": "20261008_DPL_0008_ALL_GitHubPagesで公開.md",
+      "extension": "md",
+      "summary": "このフォルダを git リポジトリにして GitHub の公開リポジトリ `kiyotake1229/usotsuki-mura` に push し、main ブランチのルートを GitHub Pages で公開した。あわせて GitHub Actions の「iOS build check」で、iOS アプリがシミュレータ向け・実機向け（署名なし）ともにビルドできることを確かめた。開発確認用の "
+    },
     {
       "no": 7,
       "date": "2026-10-08",
