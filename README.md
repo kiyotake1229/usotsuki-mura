@@ -17,6 +17,17 @@
 
 ---
 
+## 社内説明資料
+
+岩崎さんに説明するときの資料一式は `資料/` にある（開発ドキュメントとは別）。
+
+| 資料 | 場所 |
+|---|---|
+| スライド（Claude の Slides。発表・修正・PDF / PowerPoint 書き出し） | https://claude.ai/artifact/TMgWGaybyDJ2xfoNuNdvx9 |
+| スライド（PDF） | `資料/プレゼン資料/嘘つき村の事件簿_社内説明.pdf` |
+| 話す台本 | [資料/プレゼンの進め方.md](資料/プレゼンの進め方.md) |
+| スライドの元データ | `資料/プレゼン資料/project/`（PDF は `python3 資料/プレゼン資料/make-pdf.py` で作り直す） |
+
 ## 開発ドキュメント
 
 開発の記録は `docs/` で管理している。命名規則・連番のルールは [docs/README.md](docs/README.md)。一覧は `docs/manager/docs.json`。
@@ -127,7 +138,7 @@ Claude がブラウザで触るときは、先に音を消す（[../_テンプ�
 - [ ] 公開リポジトリに docs/ と引き渡し手順を入れてよいか決める（GitHub Pages では `_config.yml` で隠してあるが、github.com のリポジトリでは読める）
 - [ ] スマホ実機（iPhone / Android）で確認。特に戻るスワイプ・Web Share・ホーム画面に追加・オフライン
 - [ ] Xcode でビルド → App Store 申請（岩崎さん。`ios-app/岩崎さんへの引き渡し手順.md`）
-- [ ] 社内説明資料（`資料/`）
+- [x] 社内説明資料（`資料/`。スライド9枚・PDF・話す台本。2026-10-08）
 
 ## 今後の候補
 
