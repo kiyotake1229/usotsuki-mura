@@ -155,7 +155,7 @@ Claude がブラウザで触るときは、先に音を消す（[../_テンプ�
 - [ ] **（App Store 申請を止める項目）お問い合わせのメールアドレス**: 今は GitHub の Issues だけ。審査ガイドライン 1.5 に備えて、`ltv.work` のサポート用アドレスを決め、support.html の「お問い合わせ」とプライバシーポリシー7章に載せる（#0016。引き渡し手順6章にも確認項目を足した）
 - [ ] 公開リポジトリに docs/・資料/・引き渡し手順を入れてよいか決める（GitHub Pages では `_config.yml` で隠してあるが、github.com のリポジトリでは読める。#0016 に案A・案B）
 - [ ] iOS の UIScene 対応（2027年4月まで。それまでは Xcode 26 でビルドする。#0015・#0016）。Apple の対応表では Xcode 26 は macOS 27 の対象外なので、ビルドする Mac が macOS 27 なら前倒しが要る（この Mac も macOS 27.0.1）
-- [ ] push したら GitHub Actions の「iOS build check」が `macos-26`・Xcode 26 で通ることを確かめる（#0015 でランナーを固定した）
+- [x] GitHub Actions の「iOS build check」が `macos-26`・Xcode 26.6 で通ることを確かめた（2026-10-09。シミュレータ向け・実機向けとも BUILD SUCCEEDED。#0015）
 - [ ] 生成を速くする（★2・6人の最悪値・遠い日付の dailyConfig。問題が変わるので VERSION を上げる。#0012）
 - [ ] スマホ実機（iPhone / Android）で確認。特に戻るスワイプ・Web Share・ホーム画面に追加・オフライン
 - [ ] Xcode でビルド → App Store 申請（岩崎さん。`ios-app/岩崎さんへの引き渡し手順.md`）
