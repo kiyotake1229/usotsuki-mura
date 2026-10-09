@@ -127,7 +127,7 @@ bash docs/manager/generate_docs_json.sh
 
 ## 7. gitコミット時のルール
 
-2026-10-08 時点ではこのフォルダは git 管理していない（GitHub Pages で公開するときに始める）。それまでは、文書の作成と `generate_docs_json.sh` の実行だけを行う。
+2026-10-08 から git で管理している（GitHub の `kiyotake1229/usotsuki-mura`。#0008）。文書を作って `generate_docs_json.sh` を実行してから、下のルールでコミットする。
 
 ### コミット前チェックリスト
 
@@ -169,3 +169,4 @@ bash docs/manager/generate_docs_json.sh
 |------|------|
 | 2026-10-08 | 初版作成 |
 | 2026-10-08 | 場所の表の PWA・IOS を、作成済みの中身に合わせて更新（#0007） |
+| 2026-10-09 | 7章の「git 管理していない」を、git で管理している今の状態に直した |

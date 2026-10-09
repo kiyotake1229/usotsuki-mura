@@ -139,7 +139,7 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
   border:1px solid var(--rule-2);background:var(--paper);color:var(--ink);
   font-weight:700;font-size:15px;letter-spacing:.02em;cursor:pointer;
   transition:transform .12s ease,background-color .2s,border-color .2s,box-shadow .2s,opacity .2s;
-  text-decoration:none;
+  text-decoration:none;-webkit-user-select:none;user-select:none;
 }
 .btn:hover{border-color:var(--ink-3)}
 .btn:active{transform:translateY(1px)}
@@ -153,7 +153,7 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .btn-wide{width:100%}
 .icon-btn{
   width:44px;height:44px;display:inline-grid;place-items:center;border-radius:50%;
-  border:0;background:transparent;color:var(--ink);cursor:pointer;transition:background-color .2s
+  border:0;background:transparent;color:var(--ink);cursor:pointer;transition:background-color .2s;-webkit-user-select:none;user-select:none
 }
 .icon-btn:hover{background:var(--ai-wash)}
 .stars{display:inline-flex;gap:1px;vertical-align:-2px}
@@ -174,8 +174,8 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
 .toast{
   position:fixed;left:50%;bottom:calc(var(--bar-h) + 18px + env(safe-area-inset-bottom,0px));z-index:80;
   transform:translate(-50%,12px);opacity:0;pointer-events:none;
-  background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:700;
-  transition:opacity .25s,transform .25s;white-space:nowrap
+  background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:22px;font-size:14px;font-weight:700;
+  transition:opacity .25s,transform .25s;width:max-content;max-width:calc(100vw - 32px);text-align:center;line-height:1.45
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -234,6 +234,21 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
 .streak .lamp svg{color:var(--shu)}
 .streak b{font-size:20px;font-family:var(--f-display);font-variant-numeric:tabular-nums}
 .streak .lamp.off svg{color:var(--ink-3)}
+/* ホームのお知らせ（0〜3時の「昨日の事件はまだ間に合う」・端末の日付が No.1 より前） */
+.home-note{display:grid;gap:8px;margin-top:8px}
+.hn{
+  display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:10px;width:100%;margin:0;
+  background:var(--shu-wash);border:1px solid var(--shu);border-radius:var(--r-card);padding:10px 12px;
+  text-align:left;color:var(--ink);font-size:13px;line-height:1.55;animation:hn-in .35s cubic-bezier(.2,.7,.2,1) both
+}
+.hn > .i{color:var(--shu)}
+.hn b{display:block;font-size:14px}
+.hn small{display:block;font-size:12.5px;color:var(--ink-2)}
+p.hn{grid-template-columns:22px 1fr}
+button.hn{cursor:pointer;-webkit-user-select:none;user-select:none;transition:transform .15s,box-shadow .2s}
+button.hn:hover{box-shadow:0 2px 10px var(--shu-wash)}
+button.hn:active{transform:scale(.985)}
+@keyframes hn-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 
 .sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:34px 0 10px;gap:12px}
 .sec-h h2{font-family:var(--f-display);font-size:19px;letter-spacing:.06em}
@@ -242,7 +257,7 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
 .pr{
   position:relative;display:grid;gap:2px;justify-items:start;align-content:start;text-align:left;
   background:var(--paper);border:1px solid var(--rule);border-radius:var(--r-card);padding:12px 12px 11px;cursor:pointer;
-  transition:transform .15s,border-color .2s,box-shadow .2s
+  transition:transform .15s,border-color .2s,box-shadow .2s;-webkit-user-select:none;user-select:none
 }
 .pr:hover{border-color:var(--ink-3);box-shadow:var(--shadow);transform:translateY(-2px)}
 .pr:active{transform:translateY(0)}
@@ -309,6 +324,8 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
 .ch-story{margin:8px 0 0;color:var(--ink-2);font-size:15px;line-height:1.75}
 .ch-story p{margin:0}
 .linkish{border:0;background:none;padding:6px 0;color:var(--ai);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+/* 押すもの（ボタン類）は、ダブルクリック・トリプルクリックで文字の選択が始まらないようにする（証言・解説の本文は選べるまま） */
+.ledger button,.seg button,.switch,.linkish,.rs,[data-practice],.res-seal,.ch-seal,.sealbox,.bs-ring{-webkit-user-select:none;user-select:none}
 .linkish svg{width:16px;height:16px;transition:transform .2s}
 .linkish[aria-expanded="true"] svg{transform:rotate(180deg)}
 .ch-seal{position:absolute;right:0;top:16px;width:70px;height:70px;transform:rotate(-10deg)}
@@ -372,7 +389,7 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
 .mk{
   position:relative;display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:4px 6px;
   border:0;background:var(--paper);cursor:pointer;font-size:14px;font-weight:700;color:var(--ink-2);
-  transition:background-color .2s,color .2s,opacity .2s
+  transition:background-color .2s,color .2s,opacity .2s;-webkit-user-select:none;user-select:none
 }
 .mk:hover{background:var(--paper-2)}
 .mk-c{border:1px solid var(--rule-2);border-radius:8px}
@@ -407,7 +424,7 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
   width:100%;max-width:480px;min-height:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));
   padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
   display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;
-  background:var(--paper);border-top:1px solid var(--rule);box-shadow:var(--shadow-up)
+  background:var(--paper);border-top:1px solid var(--rule);box-shadow:var(--shadow-up);-webkit-user-select:none;user-select:none
 }
 .bar.two{grid-template-columns:1fr 1fr}
 .bar.three{grid-template-columns:1fr 1fr 1.15fr;gap:8px}
@@ -485,7 +502,7 @@ h1,h2,h3{margin:0;font-weight:800;text-wrap:balance}
 .res-streak{margin:0;text-align:center;font-size:14px;color:var(--ink-2);display:flex;justify-content:center;align-items:center;gap:6px}
 .res-streak b{font-family:var(--f-display);font-size:18px;color:var(--ink)}
 .res-streak svg{color:var(--shu)}
-.res-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.res-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;-webkit-user-select:none;user-select:none}
 .res-actions .full{grid-column:1 / -1}
 .res-actions .btn{padding:0 10px;white-space:nowrap}
 .copy-fb{display:grid;gap:6px;font-size:13px;color:var(--ink-2)}
@@ -664,7 +681,7 @@ svg.i.fill{fill:currentColor;stroke:none}
   -webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto;animation:rise .4s cubic-bezier(.2,.8,.2,1) both}
 .sv-tip{margin:0;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13.5px;color:var(--ink-2);text-align:center}
 .sv-tip svg{width:16px;height:16px;color:var(--ink-3)}
-.sv-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sv-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;-webkit-user-select:none;user-select:none}
 .sv-actions .full{grid-column:1 / -1}
 .sv-actions .btn{padding:0 10px;white-space:nowrap}
 
@@ -810,6 +827,7 @@ svg.i.fill{fill:currentColor;stroke:none}
       </div>
     </div>
     <div class="streak" id="streakLine"></div>
+    <div class="home-note" id="homeNote" hidden></div>
 
     <div class="sec-h"><h2>練習</h2><p>何問でも。日替わりの記録とは別です</p></div>
     <div class="practice" id="practiceBtns">
@@ -2320,6 +2338,9 @@ if (typeof module !== 'undefined') module.exports = Engine;
   const defaults = () => ({
     v: 1,
     t: 0,   // 最後に保存した時刻（ms）。localStorage と Preferences のどちらが新しいかを比べる
+    // 「記録を消す」をした回の目印。消すたびに新しい値にする。開いている事件は開いたときの目印を控えておき、
+    // 違っていたら（別のタブで消された）書き戻さない。ここでは乱数を作らない（空の保存を読むたびに変わらないように）
+    epoch: '',
     settings: { sound: true, haptics: true, theme: 'auto', notifyMorning: false, notifyTime: '07:00', notifyEvening: false },
     daily: {},
     practice: { byStar: { 1: null, 2: null, 3: null }, hard: null, solved: 0 },
@@ -2350,6 +2371,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const d = defaults();
     if (!isObj(o) || o.v !== 1) return d;
     d.t = Math.max(0, num(o.t, 0));
+    if (typeof o.epoch === 'string') d.epoch = o.epoch.slice(0, 40);
     if (isObj(o.settings)) {
       const s = o.settings;
       ['sound', 'haptics', 'notifyMorning', 'notifyEvening'].forEach((k) => { if (typeof s[k] === 'boolean') d.settings[k] = s[k]; });
@@ -2361,6 +2383,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
         const r = o.daily[k];
         if (!DATE_RE.test(k) || !isObj(r) || (r.state !== 'playing' && r.state !== 'solved')) return;
         const x = Object.assign({ state: r.state }, cleanPlay(r), { solvedOnDay: r.solvedOnDay === true });
+        if (r.openedOnDay === true) x.openedOnDay = true;   // その日のうちに開いた（0時をまたいでも3時までは数える）
         if (typeof r.title === 'string') x.title = r.title.slice(0, 80);
         if (Number.isInteger(r.streak) && r.streak >= 1) x.streak = r.streak;
         d.daily[k] = x;
@@ -2450,7 +2473,52 @@ if (typeof module !== 'undefined') module.exports = Engine;
 
   /* ---------- 日付と表示の小物 ---------- */
   const WD = ['日', '月', '火', '水', '木', '金', '土'];
-  const today = () => Engine.localDateStr(new Date());
+  // ==DAYRULES START== 日付と連続日数の決まり。Engine と引数だけを使う（tools/check-app.mjs がここを取り出して検査する）
+  const FIRST_DAY = '2026-10-01';   // No.1 の日
+  // 端末の日付を「今日」にする。No.1 より前なら No.1 の日として扱う（時計がずれた端末で No.-5 などを出さない）
+  const clampDay = (d) => (d < FIRST_DAY ? FIRST_DAY : d);
+  // 丸める前の端末の日付が No.1 より前か（そのときはホームと事件簿に「日付を確かめてください」を出す）
+  const clockBehind = (raw) => raw < FIRST_DAY;
+  // 日付が戻っても連続を巻き戻さない幅（日）。時差でずれる日付は最大2日（UTC+14 と UTC-12 の差は26時間）。
+  // それより大きく離れていたら、端末の時計のずれとみなして、ふつうに数え直す（先の日付で解いた記録で、連続が止まったままにならないように）
+  const TZ_SLACK = 2;
+  // その日のうちに開いた事件か。今日の事件を開いたとき、または前に開いたときの記録に「その日のうちに開いた」が残っているとき
+  // （ホームに戻ってから開き直したとき・読み込み直したとき・アプリが落ちて開き直したときも、開いた日の分として数えられるように）
+  function openedOnDayOf(caseDate, todayStr, rec) {
+    return caseDate === todayStr || !!(rec && rec.openedOnDay === true);
+  }
+  // 日替わりの事件を「その日のうちに解いた」と数えるか。当日に解いたとき、
+  // またはその日のうちに開いた事件を、0時をまたいで翌朝3時までに解いたとき（開いた日の分として数える）
+  function countsOnDay(caseDate, openedOnDay, todayStr, hour) {
+    return caseDate === todayStr || (!!openedOnDay && Engine.addDays(caseDate, 1) === todayStr && hour < 3);
+  }
+  // 0時〜3時のあいだ、前の日に開いた日替わりの事件がまだ解けていなければ、その日付（3時までに解けば連続に数える）。無ければ null
+  function pendingDay(daily, todayStr, hour) {
+    if (!(hour < 3)) return null;
+    const y = Engine.addDays(todayStr, -1), r = daily ? daily[y] : null;
+    return r && r.state === 'playing' && r.openedOnDay === true ? y : null;
+  }
+  // 解いたときに連続日数を更新する（st を書き換える）。基準は事件の日付。
+  // 最後に解いた日が事件の日付から TZ_SLACK 日以内の先（西へ移動した・時計を少し戻した）なら、連続も最後に解いた日も巻き戻さない
+  function addStreak(st, caseDate) {
+    const last = st.lastDailyDate;
+    if (last && last >= caseDate && last <= Engine.addDays(caseDate, TZ_SLACK)) return;
+    st.streak = last === Engine.addDays(caseDate, -1) ? st.streak + 1 : 1;
+    st.lastDailyDate = caseDate;
+    st.bestStreak = Math.max(st.bestStreak, st.streak);
+  }
+  // 表示する連続日数。最後に解いた日が今日か昨日なら続いている。
+  // 端末の日付が最後に解いた日より TZ_SLACK 日以内で前に戻った（西へ移動した）ときは、そのまま見せる。
+  // pending（0〜3時に、前の日に開いた事件がまだ間に合う）ときは、最後に解いた日が一昨日でも切れていない
+  function shownStreak(st, todayStr, pending) {
+    const last = st.lastDailyDate, n = st.streak || 0;
+    if (!last) return 0;
+    if (last > todayStr) return last <= Engine.addDays(todayStr, TZ_SLACK) ? n : 0;
+    if (last === todayStr || last === Engine.addDays(todayStr, -1)) return n;
+    return pending && last === Engine.addDays(todayStr, -2) ? n : 0;
+  }
+  // ==DAYRULES END==
+  const today = () => clampDay(Engine.localDateStr(new Date()));
   function parseD(ds) { const p = ds.split('-').map(Number); return { y: p[0], m: p[1], d: p[2], wd: new Date(p[0], p[1] - 1, p[2]).getDay() }; }
   function dateLabel(ds) { const p = parseD(ds); return p.m + '月' + p.d + '日（' + WD[p.wd] + '）'; }
   function fmtTime(sec) {
@@ -2472,11 +2540,11 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (arr.length <= (max || 8)) return '<span class="tries" role="img" aria-label="' + label + '">' + arr.map((c) => '<i class="' + (c === '■' ? 'ok' : '') + '"></i>').join('') + '</span>';
     return '<span class="tries tries-x" role="img" aria-label="' + label + '"><i></i><b>×' + miss + '</b>' + (ok ? '<i class="ok"></i>' : '') + '</span>';
   }
-  function streakNow() {
-    const st = S.stats; if (!st.lastDailyDate) return 0;
-    const t = today();
-    return (st.lastDailyDate === t || st.lastDailyDate === Engine.addDays(t, -1)) ? (st.streak || 0) : 0;
-  }
+  const rawToday = () => Engine.localDateStr(new Date());   // 丸める前の端末の日付
+  // 端末の日付が No.1 より前のときの案内（ホームと事件簿）。表示は No.1 の日に丸めているので、時計がずれていることをここで伝える
+  const clockNoteHTML = () => '<p class="hn" role="note">' + icon('i-clock') + '<span><b>端末の日付が 2026年10月1日より前です</b><small>日付を確かめてください。いまは No.1（10月1日）の事件を出しています。</small></span></p>';
+  const pendingNow = () => pendingDay(S.daily, today(), new Date().getHours());
+  const streakNow = () => shownStreak(S.stats, today(), !!pendingNow());
   let toastT = 0;
   function toast(msg) {
     const el = $('#toast'); el.textContent = msg; el.classList.add('show');
@@ -2822,8 +2890,11 @@ if (typeof module !== 'undefined') module.exports = Engine;
   const VIEWS = ['home', 'play', 'explain', 'book', 'howto', 'settings'];
   let cur = 'home';
   const scrollMem = {};
+  // 文字の選択を消す（ダブルクリックの選択が残ったまま次の画面や結果・共有画像を開くと、全部が青く塗られて見えるため）
+  function clearSel() { try { const g = window.getSelection && window.getSelection(); if (g && g.rangeCount) g.removeAllRanges(); } catch (e) { /* 選択の無い環境 */ } }
   function show(v, opt) {
     opt = opt || {};
+    clearSel();
     if ((v === 'play' || v === 'explain') && !P && !opt.loading) v = 'home';
     if (cur === 'play' && v !== 'play') { loadToken++; cancelHeavy(); progStop(); timerStop(); saveProgress(); closeSheet(); }
     if (v !== 'play') hideResult();
@@ -2843,7 +2914,14 @@ if (typeof module !== 'undefined') module.exports = Engine;
   /* 画面の行き来をブラウザの履歴にも積む（Android の戻るボタン・iOS の戻るスワイプでアプリ内の前の画面へ） */
   const navStack = ['home'];
   let histOK = false;
-  try { history.replaceState({ usd: 0 }, ''); histOK = true; } catch (e) { histOK = false; }
+  // 読み込み直したとき（Android の引っぱって更新・裏で捨てられたタブの開き直しなど）は、前の画面の履歴が後ろに残っている。
+  // そのままだと戻るが空振りするので、このアプリの最初の項目（usd:0）まで戻ってから始める。
+  // 戻ったときの popstate は usd:0 で、今の画面（ホーム）と同じなので何もしない。後ろの古い項目は次に進むときに切り捨てられる
+  try {
+    const u0 = history.state && Number.isInteger(history.state.usd) ? history.state.usd : 0;
+    if (u0 > 0) history.go(-u0); else history.replaceState({ usd: 0 }, '');
+    histOK = true;
+  } catch (e) { histOK = false; }
   function go(v, opt) {
     if ((v === 'play' || v === 'explain') && !P && !(opt && opt.loading)) v = 'home';
     const k = navStack.lastIndexOf(v);
@@ -2913,6 +2991,15 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const sk = streakNow();
     $('#streakLine').innerHTML = '<span class="lamp' + (sk ? '' : ' off') + '">' + icon('i-lamp') + '連続 <b>' + sk + '</b> 日</span>' +
       '<span>最高 ' + (S.stats.bestStreak || 0) + '日</span><span>解決 ' + (S.stats.totalSolved || 0) + '件</span>';
+    // お知らせ: 0〜3時に、前の日に開いた事件がまだ間に合う／端末の日付が No.1 より前
+    let note = '';
+    const pd = pendingNow();
+    if (pd) {
+      note += '<button type="button" class="hn" data-pending="' + pd + '">' + icon('i-hourglass') +
+        '<span><b>昨日の事件 No.' + Engine.dailyConfig(pd).no + ' は捜査の途中です</b><small>3時までに解けば、連続日数に数えます</small></span>' + icon('i-chev') + '</button>';
+    }
+    if (clockBehind(rawToday())) note += clockNoteHTML();
+    const hn = $('#homeNote'); hn.innerHTML = note; hn.hidden = !note;
     $$('#practiceBtns [data-stars]').forEach((el) => { el.innerHTML = starsHTML(+el.dataset.stars).replace(/^<span[^>]*>|<\/span>$/g, ''); });
     // 「途中」は、判定・犯人・ヒント・ミスのどれかに手を付けた練習だけ（★ごとに1件ずつ残す）
     $$('#practiceBtns .pr').forEach((b) => {
@@ -2953,10 +3040,13 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (!P || !P.ready) return;
     const el = Math.round(elapsedNow());
     update((s) => {
+      if ((s.epoch || '') !== (P.epoch || '')) return;   // 開いたあとに別のタブで記録が消された: 書き戻さない
       if (P.mode === 'daily') {
         const old = s.daily[P.date];
         if (old && old.state === 'solved') return; // 解決済みの記録は上書きしない（別のタブで先に解いた分も守る）
         const rec = Object.assign({ state: P.state }, playRec(el), { solvedOnDay: !!P.solvedOnDay, title: P.pz.story.title });
+        // その日のうちに開いたことを記録に残す（開き直し・読み込み直しのあとも、翌朝3時までなら連続に数える）
+        if (P.openedOnDay || (old && old.openedOnDay === true)) rec.openedOnDay = true;
         if (P.state === 'solved' && P.streakAtSolve != null) rec.streak = P.streakAtSolve;
         s.daily[P.date] = rec;
       } else if (P.state === 'playing') {
@@ -3144,7 +3234,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (spec.mode === 'daily') {
       const rec = S.daily[spec.date];
       base = rec || {};
-      P = { mode: 'daily', date: spec.date, from: spec.from || 'home', pz, state: rec && rec.state === 'solved' ? 'solved' : 'playing', solvedOnDay: !!(rec && rec.solvedOnDay) };
+      P = { mode: 'daily', date: spec.date, from: spec.from || 'home', pz, state: rec && rec.state === 'solved' ? 'solved' : 'playing', solvedOnDay: !!(rec && rec.solvedOnDay),
+        openedOnDay: openedOnDayOf(spec.date, today(), rec) };   // その日のうちに開いたか（0時をまたいで解いたときに、3時までは開いた日の分として数える）
       // 結果の「連続〇日」は解いた時点の値（古い記録は、最後に解いた日がその日なら今の値と同じ）
       if (P.state === 'solved' && P.solvedOnDay) {
         P.streakAtSolve = Number.isInteger(rec.streak) ? rec.streak : S.stats.lastDailyDate === spec.date ? S.stats.streak : null;
@@ -3158,6 +3249,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     // 問題の作り方が変わる前に保存した途中は、別の問題のものなので使わない（判定もミス・ヒント・時間も。解決済みはそのまま）
     const stale = P.state !== 'solved' && base.v !== Engine.VERSION;
     const b = stale ? {} : base;
+    P.epoch = S.epoch || '';
     Object.assign(P, {
       marks: okMarks(b.marks), culprit: okC(b.culprit), mistakes: cnt(b.mistakes), hints: cnt(b.hints),
       attempts: typeof b.attempts === 'string' ? b.attempts : '', elapsed: Math.max(0, num(b.elapsed, 0)),
@@ -3168,6 +3260,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (P.date) titleCache[P.date] = pz.story.title;
     saveProgress();
     renderBoard(true);
+    clearSel();   // 練習カードのトリプルクリックなどで、出てきた盤面の題名・あらましが選ばれたままにならないように
     timerStart();
   }
 
@@ -3459,8 +3552,10 @@ if (typeof module !== 'undefined') module.exports = Engine;
     P.marks = P.pz.solution.status.slice(); P.culprit = P.pz.solution.culprit; P.lastWrong = null;
     if (P.mode === 'daily') {
       const t = today();
-      P.solvedOnDay = P.date === t;
+      // その日のうちに開いた事件を、0時をまたいで翌朝3時までに解いたときも、開いた日の分として数える
+      P.solvedOnDay = countsOnDay(P.date, P.openedOnDay, t, new Date().getHours());
       update((s) => {
+        if ((s.epoch || '') !== (P.epoch || '')) P.epoch = s.epoch || '';   // 別のタブで記録が消されたあと: 新しい記録として数える
         const old = s.daily[P.date];
         if (old && old.state === 'solved') {          // 別のタブで先に解決していた: 二重に数えず、その記録を見せる
           Object.assign(P, { mistakes: old.mistakes, hints: old.hints, attempts: old.attempts || '■', elapsed: old.elapsed, solvedOnDay: old.solvedOnDay });
@@ -3470,17 +3565,17 @@ if (typeof module !== 'undefined') module.exports = Engine;
         const st = s.stats;
         st.totalSolved += 1;
         if (P.mistakes === 0) st.perfect += 1;
-        if (P.solvedOnDay && st.lastDailyDate !== t) {
-          st.streak = st.lastDailyDate === Engine.addDays(t, -1) ? st.streak + 1 : 1;
-          st.lastDailyDate = t;
-          st.bestStreak = Math.max(st.bestStreak, st.streak);
-        }
+        // 基準は事件の日付（P.date）。最後に解いた日が少し先（時差で日付が戻ったとき）なら、連続も最後の日も巻き戻さない（addStreak）
+        if (P.solvedOnDay) addStreak(st, P.date);
         if (P.solvedOnDay) P.streakAtSolve = st.streak;  // 結果とコピー文には、解いた時点の連続日数を使う
       });
       saveProgress();
       syncNotifications();   // 今日を解いたら、夜の「まだ解いていません」を取り消す
     } else {
-      update((s) => { s.practice.solved += 1; pracSet(s, P.slot, null); });
+      update((s) => {
+        if ((s.epoch || '') !== (P.epoch || '')) P.epoch = s.epoch || '';
+        s.practice.solved += 1; pracSet(s, P.slot, null);
+      });
     }
     closeSheet(); clearContra();
     for (let i = 0; i < P.pz.people; i++) updateCard(i);
@@ -3516,12 +3611,13 @@ if (typeof module !== 'undefined') module.exports = Engine;
   }
   function showResult(animate) {
     if (!P) return;
+    clearSel();
     const pz = P.pz;
     const anim = animate && !reduceMotion();
     const ring = ringLabel();
     let streak;
     if (P.mode === 'daily') {
-      streak = !P.solvedOnDay ? '<p class="res-streak">当日以外に解いた事件は、連続日数に数えません</p>'
+      streak = !P.solvedOnDay ? '<p class="res-streak">' + (P.openedOnDay ? '翌朝3時を過ぎてから解いた事件は、連続日数に数えません' : '当日以外に解いた事件は、連続日数に数えません') + '</p>'
         : P.streakAtSolve != null ? '<p class="res-streak">' + icon('i-lamp') + '連続 <b>' + P.streakAtSolve + '</b> 日</p>'
           : '<p class="res-streak">' + icon('i-lamp') + 'その日のうちに解決</p>';
     } else streak = '<p class="res-streak">練習で解いた事件 <b>' + (S.practice.solved || 0) + '</b> 件</p>';
@@ -3907,6 +4003,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
   }
   let shareImg = null;   // 画面内に出している画像（［共有…］で使う）
   function openShareView(img) {
+    clearSel();
     const el = $('#shareView');
     shareImg = img;
     const tweet = 'https://x.com/intent/post?text=' + encodeURIComponent(copyText());
@@ -4003,7 +4100,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
       '<div><b>' + streakNow() + '</b><span>連続</span></div>' +
       '<div><b>' + (st.bestStreak || 0) + '</b><span>最高連続</span></div>' +
       '<div><b>' + (st.perfect || 0) + '</b><span>ノーミス</span></div></div>' +
-      '<p class="tally-note">練習で解いた事件 ' + (S.practice.solved || 0) + '件。過去の日の事件も遊べます（連続日数には数えません）。</p>' +
+      '<p class="tally-note">練習で解いた事件 ' + (S.practice.solved || 0) + '件。過去の日の事件も遊べます（連続日数には数えません。ただし、その日のうちに開いた事件は、翌朝3時までに解けば数えます）。</p>' +
+      (clockBehind(rawToday()) ? '<div class="home-note">' + clockNoteHTML() + '</div>' : '') +
       '<ul class="ledger">';
     for (let i = 0; i < 14; i++) {
       const d = Engine.addDays(t, -i);
@@ -4056,7 +4154,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       '<table class="week"><thead><tr><th>曜日</th><th>難しさ</th><th>容疑者</th></tr></thead><tbody>' +
       [['月', 1, 4], ['火', 1, 5], ['水', 2, 4], ['木', 2, 5], ['金', 2, 6], ['土', 3, 5], ['日', 3, 6]]
         .map((r) => '<tr><td>' + r[0] + '</td><td>' + starsHTML(r[1]) + '</td><td>' + r[2] + '人</td></tr>').join('') +
-      '</tbody></table><p>その日のうちに解くと「連続日数」がのびます。</p>' +
+      '</tbody></table><p>その日のうちに解くと「連続日数」がのびます。夜に開いた事件は、0時を過ぎても翌朝3時までに解けば、開いた日の分として数えます。</p>' +
       '<h2>練習と難問</h2><p>練習では、★1〜★3 の事件を何問でも解けます（日替わりの記録とは別）。「難問」は容疑者9人・★3 の大事件です。仮定を何度か重ねて、腰を据えて解きましょう。人数が多いので、上の名簿を押すとその人のカードへ移動できます。</p>' +
       '<div style="margin-top:22px"><button class="btn btn-pri btn-wide" type="button" data-practice="1">' + icon('i-search') + '練習（★1）で試す</button></div>';
     $('#howtoBody').innerHTML = h;
@@ -4107,6 +4205,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const pr = t.closest('[data-practice]');
     if (pr) { openPractice(pr.dataset.practice); return; }
     if (t.closest('#tOpen')) { openCase({ mode: 'daily', date: today(), from: 'home' }); return; }
+    const pdb = t.closest('[data-pending]');
+    if (pdb) { openCase({ mode: 'daily', date: pdb.dataset.pending, from: 'home' }); return; }
     const lg = t.closest('[data-date]');
     if (lg) { openCase({ mode: 'daily', date: lg.dataset.date, from: 'book' }); return; }
 
@@ -4195,7 +4295,9 @@ if (typeof module !== 'undefined') module.exports = Engine;
       else if (a === 'no') confirmOpen = false;
       else if (a === 'yes') {
         const keep = S.settings;
-        S = defaults(); S.settings = keep; persist();
+        S = defaults(); S.settings = keep;
+        S.epoch = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);   // ほかのタブの事件が書き戻さないように
+        persist();
         P = null; confirmOpen = false; lastPracticeTitle = null;
         navStack.length = 1; navStack.push('settings');
         Object.keys(titleCache).forEach((k) => delete titleCache[k]);
@@ -4221,11 +4323,20 @@ if (typeof module !== 'undefined') module.exports = Engine;
   });
 
   // 経過時間は画面が見えている間だけ進む
-  let tick = 0, lastDay = today();
+  let tick = 0, lastDay = today(), lastEarly = new Date().getHours() < 3;
   setInterval(() => {
-    // 表示したまま日付が変わったら、ホームと事件簿の「今日」を描き直す
-    const d = today();
-    if (d !== lastDay) { lastDay = d; if (cur === 'home') renderHome(); else if (cur === 'book') renderBook(); }
+    // 表示したまま日付が変わったとき・3時を過ぎたときは、ホームと事件簿の「今日」・連続・お知らせを描き直す
+    // （ロック中・裏にある間・スリープ中はこのタイマーが止まるので、起きたときの最初の1回で、いまの時刻に合わせて判断する）
+    const d = today(), early = new Date().getHours() < 3;
+    if (d !== lastDay || early !== lastEarly) {
+      lastDay = d; lastEarly = early;
+      if (cur === 'home') renderHome(); else if (cur === 'book') renderBook();
+      // 開いた日の事件を解いている途中で、日付が変わった・3時を過ぎた: 連続日数に数えるかを知らせる
+      else if (cur === 'play' && P && P.ready && P.mode === 'daily' && P.state !== 'solved' && P.openedOnDay && P.date < d) {
+        if (countsOnDay(P.date, true, d, new Date().getHours())) toast('日付が変わりました。3時までに解けば、連続日数に数えます');
+        else toast('翌朝3時を過ぎたので、この事件は連続日数に数えません');
+      }
+    }
     if (cur !== 'play' || !P || !P.ready) return;
     $('#tbClock').textContent = fmtTime(elapsedNow());
     if (T.running && ++tick % 20 === 0) saveProgress();
@@ -4242,8 +4353,17 @@ if (typeof module !== 'undefined') module.exports = Engine;
   window.addEventListener('storage', (e) => {
     if (e.key !== KEY && e.key !== null) return;
     const fresh = readStore(); if (!fresh) return;
+    const wiped = (fresh.epoch || '') !== (S.epoch || '');   // 別のタブで「記録を消す」をした
     S = fresh;
     applyTheme();
+    if (wiped) {
+      // 開いている事件は消す前のものなので閉じる（書き戻さない）。事件・解説の画面にいたらホームへ
+      timerStop(); loadToken++; cancelHeavy(); progStop(); closeSheet(); hideResult();
+      P = null; lastPracticeTitle = null;
+      Object.keys(titleCache).forEach((k) => delete titleCache[k]);
+      if (cur === 'play' || cur === 'explain') go('home');
+      toast('別の画面で記録が消されました');
+    }
     if (cur === 'home') renderHome(); else if (cur === 'book') renderBook(); else if (cur === 'settings') renderSettings();
   });
 

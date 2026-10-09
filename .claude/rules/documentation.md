@@ -41,13 +41,15 @@ bash docs/manager/generate_docs_json.sh
 ## このアプリでの注意
 
 - 推論エンジン（ENG）を変えたら、文書を書く前に `node tools/check-engine.mjs index.html` を実行し、PASS を確かめる。結果（PASS/FAIL・生成時間）を文書の「確認」に書く
+- 画面の日付と連続日数の決まり（`index.html` の `// ==DAYRULES START==`〜`// ==DAYRULES END==`）を変えたら、`node tools/check-app.mjs index.html` を実行し、PASS を確かめる
 - 問題の作り方が変わる変更（生成の手順・表・定数・言い回しの選び方など）は、全員の日替わり問題を変える。エンジンの `VERSION` を上げ、そのことを文書に必ず書く
+- 7〜9人（難問）の作り方（`HARD` の表・`buildCandidate` の hard の分岐など）を変えた場合も `VERSION` を上げる。難問の途中は seed だけを保存し、開き直すときに作り直すので、版を上げないと解きかけの判子が別の問題に付いて再開される。`check-engine` の回帰ハッシュ（日替わり365日・練習240問・難問90問）のどれかが FAIL したら、問題が変わったということ
 - 開発中のエンジンを別ファイルで作るときは、仕上がったら `index.html` の `// ==ENGINE START==`〜`// ==ENGINE END==` の間に入れ直す（アプリは1ファイルで完結させる）
 - 作業用・実験用のファイルはこのフォルダに残さない（Dropbox で共有されている）
 
 ## gitコミット時のドキュメント管理
 
-2026-10-08 時点ではこのフォルダは git 管理していない。GitHub Pages で公開するときに git を始め、以後は下のルールに従う。それまでは「ドキュメント作成 → `generate_docs_json.sh` 実行」までを行う。
+2026-10-08 から git で管理している（GitHub の `kiyotake1229/usotsuki-mura`。push すると GitHub Pages に反映される）。下のルールに従ってコミットする。
 
 ### コミット前チェックリスト
 

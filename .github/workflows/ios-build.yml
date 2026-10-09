@@ -2,6 +2,10 @@
 # npm ci → www/ へコピー → cap sync（pod install）→ xcodebuild が通ることを確かめる。
 # App Store への申請には使わない（申請は Xcode の Archive で行う。ios-app/岩崎さんへの引き渡し手順.md）。
 #
+# Xcode は 26 で確かめる（ios-app/岩崎さんへの引き渡し手順.md 2章と同じ）。このプロジェクトは Capacitor 7 のままで UIScene に
+# 対応していないため、Xcode 27（iOS 27 の SDK）でビルドすると起動しないおそれがある。macos-latest の既定の Xcode が 27 に
+# 変わっても 26 で確かめ続けられるよう、ランナーは macos-26 に固定し、既定が 26 でなければ 26 を選び直す。
+#
 # 失敗を見逃さないための決まり:
 #   - xcodebuild の出力を tee / tail に流すので、set -o pipefail で xcodebuild の失敗をそのまま失敗にする
 #   - さらにログに「** BUILD SUCCEEDED **」が無ければ失敗にする
@@ -26,7 +30,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-26
     timeout-minutes: 40
     env:
       # 日本語の入ったパス・表示名で CocoaPods が止まらないように
@@ -44,6 +48,19 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: ios-app/package-lock.json
+
+      - name: Select Xcode 26
+        run: |
+          set -euo pipefail
+          V=$(xcodebuild -version 2>/dev/null | sed -n 1p)
+          case "$V" in
+            "Xcode 26."*) echo "既定の $V を使う" ;;
+            *)
+              X=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | tail -n 1 || true)
+              [ -n "$X" ] || { echo "::error::ランナーに Xcode 26 がありません（既定は $V）"; exit 1; }
+              sudo xcode-select -s "$X/Contents/Developer"
+              echo "既定の $V から $X に切り替えた" ;;
+          esac
 
       - name: Versions
         run: |

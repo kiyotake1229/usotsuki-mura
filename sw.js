@@ -14,6 +14,10 @@
  *   一度表示した文字は、オフラインでもこの書体で出る。
  * - 古い版のキャッシュは activate で消す。消すのは名前が「usotsuki-」で始まるものだけ
  *   （github.io は同じドメインにほかのアプリも載るので、ほかのアプリのキャッシュには触らない）
+ * - ほかのアプリに消されても入れ直す: キャッシュの置き場所はドメインに1つで、同じ github.io のほかのアプリの中には
+ *   自分以外のキャッシュを全部消すものがある。そこでページを開くたびに（ネットにつながっているとき）、
+ *   先にキャッシュするファイル（PRECACHE）のうち無くなったものだけを取り直す（refill）。
+ *   消された直後に通信なしで開いた場合は防げないが、一度つながった状態で開けば元に戻る。
  *
  * 登録は index.html の最後の小さなスクリプトが行う（iOS アプリの中・Claude Artifact などでは登録しない）。
  */
@@ -92,8 +96,9 @@ async function page(event) {
     if (res && res.ok && res.type === 'basic') saving = cache.put(key, res.clone()).catch(() => {});
     return res;
   })();
-  // 遅くてキャッシュを先に出したときも、届いたらキャッシュを新しくしておく
-  event.waitUntil(network.then(() => saving, () => {}));
+  // 遅くてキャッシュを先に出したときも、届いたらキャッシュを新しくしておく。
+  // つながっているときは、ほかのアプリに消された分（PRECACHE の欠け）も入れ直す
+  event.waitUntil(network.then(() => saving).then(refill).catch(() => {}));
 
   const fromCache = async () => {
     let hit = await cache.match(key);
@@ -138,6 +143,18 @@ function clean(res) {
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(null), ms));
+}
+
+// 先にキャッシュするファイルのうち、キャッシュに無いものだけを取り直す（同じドメインのほかのアプリに消されたとき）
+async function refill() {
+  const cache = await caches.open(APP_CACHE);
+  await Promise.all(PRECACHE.map(async (u) => {
+    if (await cache.match(u)) return;
+    try {
+      const res = await fetch(new Request(u, { cache: 'reload' }));
+      if (res.ok && res.type === 'basic') await cache.put(u, res);
+    } catch (e) { /* 取れなければ次に開いたときにまた試す */ }
+  }));
 }
 
 /* ---------- 同じ場所のほかのファイル: キャッシュ優先 ---------- */
