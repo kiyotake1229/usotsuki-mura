@@ -8,7 +8,7 @@
 | 状態 | **Web版 公開中（GitHub Pages）/ PWA 対応済み / iOS プロジェクト構築済み・ビルド確認済み（GitHub Actions。引き渡し可）** |
 | 一般公開URL（GitHub Pages） | https://kiyotake1229.github.io/usotsuki-mura/ （2026-10-08 公開。リポジトリ https://github.com/kiyotake1229/usotsuki-mura 。`index.html` を push すると数十秒で反映） |
 | サポートURL（App Store 用） | https://kiyotake1229.github.io/usotsuki-mura/support.html （プライバシーポリシーは `#privacy`） |
-| 開発確認用（Claude Artifact） | https://claude.ai/artifact/BRWf8oJikTLt1mrkdA83Di （2026-10-08 夜の版。#0010〜#0015 の直しはまだ載せていない。最新は GitHub Pages） |
+| 開発確認用（Claude Artifact） | https://claude.ai/artifact/BRWf8oJikTLt1mrkdA83Di （2026-10-09 に最新の版で公開し直した。#0016 まで反映） |
 | 本体 | `index.html`（約290KB・4,500行。画面・推論エンジン・似顔絵の SVG まですべて1ファイル） |
 | 通信 | 記録や操作の内容は外に送らない。外から読むのは Google Fonts の文字だけ（表示を止めずに読む。読めなくても端末の文字で表示される） |
 | データ | 端末内のみ（localStorage のキー `usotsuki.v1`。iOS アプリは Preferences にも二重に保存） |
