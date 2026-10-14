@@ -691,10 +691,102 @@ svg.i.fill{fill:currentColor;stroke:none}
   border:1px solid var(--rule-2);border-radius:8px;padding:4px 10px;min-height:40px}
 .set-note{grid-column:2 / -1;margin:0;font-size:12.5px;color:var(--shu-ink)}
 
+/* ---------- はじめての事件（ホームの案内・遊び方・事件の中の案内・結果） ---------- */
+.tut-card{position:relative;margin-top:18px;background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--ai);border-radius:var(--r-card);
+  box-shadow:var(--shadow);padding:14px 16px 16px;display:grid;gap:8px;animation:hn-in .35s cubic-bezier(.2,.7,.2,1) both}
+.tut-card .eyebrow{color:var(--ai)}
+.tc-x{position:absolute;right:4px;top:4px;color:var(--ink-3)}
+.tc-h{font-family:var(--f-display);font-size:21px;letter-spacing:.04em;display:flex;align-items:baseline;gap:4px 10px;flex-wrap:wrap;padding-right:34px;line-height:1.35}
+.tc-h small{font-family:var(--f-body);font-size:13px;font-weight:700;color:var(--ink-2);letter-spacing:.02em}
+.tc-d{margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)}
+.tc-steps{list-style:none;margin:4px 0 6px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.tc-steps li{position:relative;display:grid;justify-items:center;align-content:start;gap:5px;text-align:center;font-size:11.5px;line-height:1.35;font-weight:700;color:var(--ink-3)}
+.tc-steps li + li::before{content:"";position:absolute;top:14px;right:calc(50% + 15px);width:calc(100% - 24px);border-top:1.5px dashed var(--rule-2)}
+.tc-steps i{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-display);font-weight:800;font-size:14px;
+  border:1.5px solid var(--rule-2);background:var(--paper);color:var(--ink-3);transition:background-color .3s,border-color .3s,box-shadow .3s}
+.tc-steps li.now{color:var(--ink)}
+.tc-steps li.now i{border-color:var(--ai);color:var(--ai);box-shadow:0 0 0 3px var(--ai-wash)}
+.tc-steps li.ok{color:var(--ink-2)}
+.tc-steps li.ok i{background:var(--shu);border-color:var(--shu);color:var(--on-shu)}
+.tc-steps li.ok.now i{box-shadow:0 0 0 3px var(--ai-wash),0 0 0 4.5px var(--ai)}
+.ht-tut{margin-top:16px;padding:14px;border:1px solid var(--rule);border-left:4px solid var(--ai);border-radius:var(--r-card);background:var(--paper);box-shadow:var(--shadow);display:grid;gap:8px}
+.ht-tut .ht-k{margin:0;font-family:var(--f-display);font-size:18px;font-weight:800;letter-spacing:.06em;line-height:1.4}
+.ht-tut .ht-d{margin:0;font-size:14px;line-height:1.7;color:var(--ink-2)}
+.ht-row{display:grid;grid-template-columns:1.5fr 1fr;gap:10px}
+.ht-row .btn{padding:0 10px;white-space:nowrap}
+.ex-note{display:flex;align-items:flex-start;gap:6px;margin:4px 0 0;font-size:13px;line-height:1.65;color:var(--ink-3)}
+.ex-note .i{flex:none;width:15px;height:15px;margin-top:.2em;color:var(--ai)}
+/* 事件の画面: やることの説明（あらましの下）と、上に付いてくる案内 */
+.topbar.tut .tb-meta{display:none}
+.tb-case .no{overflow:hidden;text-overflow:ellipsis}
+.tut-lead{margin-top:12px;padding:10px 12px;border-radius:4px;background:var(--ai-wash);display:grid;gap:4px}
+.tut-lead p{margin:0;font-size:14px;line-height:1.7;color:var(--ink-2)}
+.tut-lead .tl-k{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--ai)}
+.tut-lead .tl-k b{font-family:var(--f-display);font-size:15px;color:var(--ink);letter-spacing:.04em}
+.guide{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--tb-h,53px));z-index:25;margin-top:14px;
+  background:var(--paper);border:1px solid var(--ai);border-left-width:4px;border-radius:var(--r-card);
+  box-shadow:0 10px 20px -14px rgba(27,42,71,.6);padding:8px 12px 10px;display:grid;gap:1px;transition:border-color .25s}
+.gd-k{margin:0;display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.12em;color:var(--ai)}
+.gd-ic{display:inline-grid}
+.gd-ic svg{width:15px;height:15px}
+.gd-t{margin:0;font-size:14.5px;line-height:1.65;color:var(--ink);min-height:1.65em}
+.guide.hypo{border-style:dashed;border-left-style:solid}
+.guide.warn,.guide.ok{border-color:var(--shu)}
+.guide.warn .gd-k,.guide.ok .gd-k{color:var(--shu-ink)}
+.guide.upd .gd-t{animation:gd-in .35s cubic-bezier(.2,.7,.2,1) both}
+@keyframes gd-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.res-title.sm{font-size:24px;letter-spacing:.04em}
+.res-msg{display:grid;gap:6px;text-align:center}
+.res-msg p{margin:0;font-size:14.5px;line-height:1.75;color:var(--ink-2)}
+.res-paper .tc-steps{width:100%;max-width:330px;margin:0 auto}
+
+/* ---------- 今週の難問（ホームのカード） ---------- */
+.wk{position:relative;width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:14px;text-align:left;
+  background:linear-gradient(90deg,var(--ai-wash),transparent 72%),var(--paper);border:1px solid var(--rule);border-radius:var(--r-card);
+  padding:14px;cursor:pointer;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,border-color .2s,box-shadow .2s;-webkit-user-select:none;user-select:none}
+.wk:hover{border-color:var(--ink-3);transform:translateY(-2px)}
+.wk:active{transform:translateY(0)}
+.wk-body{display:grid;gap:3px;min-width:0}
+.wk-tag{justify-self:start;padding:1px 8px;border:1px solid color-mix(in srgb,var(--ai) 45%,transparent);border-radius:999px;background:var(--paper);
+  color:var(--ai);font-size:11px;font-weight:700;letter-spacing:.06em;line-height:1.6}
+.wk-top{display:flex;align-items:center;flex-wrap:wrap;gap:2px 10px;font-size:13px;color:var(--ink-2)}
+.wk-top b{font-family:var(--f-display);font-size:17px;color:var(--ink);letter-spacing:.04em}
+.wk-top .stars svg{width:13px;height:13px}
+.wk-title{font-family:var(--f-display);font-size:18px;font-weight:800;line-height:1.4;letter-spacing:.02em}
+.wk-title.wait{font-family:var(--f-body);font-size:14px;font-weight:500;color:var(--ink-3)}
+.wk-st{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:12.5px;color:var(--ink-2);min-height:24px}
+.wk-st .mini-seal{display:block;width:26px;height:26px;transform:rotate(-10deg)}
+.wk-st .mini-seal svg{display:block;width:100%;height:100%;overflow:visible}
+.wk .wk-go{color:var(--ink-3);transition:transform .2s}
+.wk:hover .wk-go{transform:translateX(3px)}
+
+/* ---------- 事件簿: 切り替え・月の見出し・もっと見る ---------- */
+.booktabs{display:grid;grid-template-columns:1fr 1fr;margin-top:18px;border:1px solid var(--rule-2);border-radius:8px;overflow:hidden;background:var(--paper)}
+.booktabs button{border:0;background:transparent;min-height:44px;padding:8px 6px;display:flex;align-items:baseline;justify-content:center;gap:6px;
+  font-size:14px;font-weight:700;color:var(--ink-2);cursor:pointer;transition:background-color .2s,color .2s;-webkit-user-select:none;user-select:none}
+.booktabs button + button{border-left:1px solid var(--rule-2)}
+.booktabs button:hover{background:var(--ai-wash)}
+.booktabs button small{font-size:11.5px;font-weight:500;opacity:.85}
+.booktabs button[aria-selected="true"]{background:var(--ai);color:var(--ai-ink)}
+.booktabs button:focus-visible{outline-offset:-3px}
+.book-panel{animation:view-in .25s cubic-bezier(.2,.7,.2,1) both}
+.book-note{margin:10px 2px 0;font-size:12.5px;line-height:1.6;color:var(--ink-3)}
+.book-panel .ledger{margin-top:12px}
+.ledger li{content-visibility:auto;contain-intrinsic-size:auto 80px}   /* 画面の外の行は描くのを後回しにする（行が多くても固まらない） */
+.ledger button:focus-visible{outline-offset:-3px}   /* 行（li）の外へはみ出す焦点の枠は content-visibility で切り取られるので、内側に描く */
+.ledger li.lg-head{border-bottom:0;content-visibility:visible}
+.lg-head h3{margin:16px 2px 4px;display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.14em;color:var(--ink-2)}
+.lg-head:first-child h3{margin-top:10px}
+.lg-head h3::after{content:"";flex:1;border-top:1px solid var(--rule)}
+.lg-no.lg-wk{line-height:1}
+.lg-no.lg-wk small{margin:1px 0}
+.lg-more{margin-top:14px}
+.lg-more svg{color:var(--ink-3)}
+
 /* ---------- 日本語の改行（語の途中で1〜2文字だけ次の行に落ちないように） ---------- */
 .masthead p,.pr span.d,.sec-h p,.index small,.page-lead,.prose p,.rulelist li,.legend span,.ch-story,.rules p,
 .vc-say,.vc-note,.steps p,.hy p,.hy li,.sheet-b,.res-streak,.res-case,.confirm p,.settings small,.about,.foot span,.tally-note,.board-foot,.memo .mk-t,.ex-card p,
-.ld-note,.ld-err small,.sv-tip{
+.ld-note,.ld-err small,.sv-tip,.tc-d,.tc-steps li,.ht-d,.tut-lead p,.gd-t,.res-msg p,.book-note,.wk-title,.ex-note,.wk-tag{
   word-break:auto-phrase;text-wrap:pretty
 }
 @supports not (word-break:auto-phrase){
@@ -812,6 +904,8 @@ svg.i.fill{fill:currentColor;stroke:none}
       <p class="kp">正直者と嘘つきを見分けて、<wbr>犯人を1人だけ<wbr>当てよう。</p>
     </header>
 
+    <div id="tutCard" hidden></div>
+
     <div class="casefile">
       <div class="cf-tab"><svg class="i" style="width:15px;height:15px"><use href="#i-scroll"/></svg>今日の事件</div>
       <div class="cf-body" id="todayCard">
@@ -829,16 +923,19 @@ svg.i.fill{fill:currentColor;stroke:none}
     <div class="streak" id="streakLine"></div>
     <div class="home-note" id="homeNote" hidden></div>
 
+    <div class="sec-h"><h2>今週の難問</h2><p>週に1問。全員が同じ事件</p></div>
+    <div id="weekBox"></div>
+
     <div class="sec-h"><h2>練習</h2><p>何問でも。日替わりの記録とは別です</p></div>
     <div class="practice" id="practiceBtns">
       <button class="pr" type="button" data-practice="1"><span class="stars" data-stars="1"></span><b>やさしい</b><span class="d kp">メモから<wbr>順にたどる</span></button>
       <button class="pr" type="button" data-practice="2"><span class="stars" data-stars="2"></span><b>ふつう</b><span class="d kp">1回の仮定で<wbr>確かめる</span></button>
       <button class="pr" type="button" data-practice="3"><span class="stars" data-stars="3"></span><b>むずかしい</b><span class="d kp">仮定を重ねて<wbr>じっくり</span></button>
-      <button class="pr pr-hard" type="button" data-practice="hard"><span class="ph-num" aria-hidden="true"><b>9</b>人</span><span class="ph-body"><span class="ph-top"><span class="stars" data-stars="3"></span><b>難問</b></span><span class="d kp">容疑者9人の<wbr>大事件。<wbr>腰を据えて<wbr>じっくり</span></span><svg class="i ph-go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+      <button class="pr pr-hard" type="button" data-practice="hard"><span class="ph-num" aria-hidden="true"><b>9</b>人</span><span class="ph-body"><span class="ph-top"><span class="stars" data-stars="3"></span><b>難問</b></span><span class="d kp">毎回ちがう<wbr>9人の事件。<wbr>何度でも<wbr>遊べます</span></span><svg class="i ph-go" aria-hidden="true"><use href="#i-chev"/></svg></button>
     </div>
 
     <ul class="index">
-      <li><button type="button" data-nav="book"><svg class="i"><use href="#i-book"/></svg><span><b>事件簿</b><small>直近14日の事件と、これまでの記録</small></span><svg class="i"><use href="#i-chev"/></svg></button></li>
+      <li><button type="button" data-nav="book"><svg class="i"><use href="#i-book"/></svg><span><b>事件簿</b><small>これまでの事件（毎日・今週の難問）と記録</small></span><svg class="i"><use href="#i-chev"/></svg></button></li>
       <li><button type="button" data-nav="howto"><svg class="i"><use href="#i-q"/></svg><span><b>遊び方</b><small>ルールと、例題での考え方</small></span><svg class="i"><use href="#i-chev"/></svg></button></li>
       <li><button type="button" data-nav="settings"><svg class="i"><use href="#i-gear"/></svg><span><b>設定</b><small>効果音・振動・テーマ・記録</small></span><svg class="i"><use href="#i-chev"/></svg></button></li>
     </ul>
@@ -2332,7 +2429,157 @@ if (typeof module !== 'undefined') module.exports = Engine;
   const plug = (name) => (NATIVE && CAP[name]) || null;
   const quiet = (p) => { if (p && typeof p.catch === 'function') p.catch(() => {}); return p; };
 
+  /* ---------- 日付・週・事件簿の並びの決まり（保存を読む sanitize でも使うので、保存より前に置く） ---------- */
+  const WD = ['日', '月', '火', '水', '木', '金', '土'];
+  // ==DAYRULES START== 日付と連続日数・週・事件簿の並びの決まり。Engine と引数だけを使う（tools/check-app.mjs がここを取り出して検査する）
+  const FIRST_DAY = '2026-10-01';   // No.1 の日
+  // 端末の日付を「今日」にする。No.1 より前なら No.1 の日として扱う（時計がずれた端末で No.-5 などを出さない）
+  const clampDay = (d) => (d < FIRST_DAY ? FIRST_DAY : d);
+  // 丸める前の端末の日付が No.1 より前か（そのときはホームと事件簿に「日付を確かめてください」を出す）
+  const clockBehind = (raw) => raw < FIRST_DAY;
+  // 日付が戻っても連続を巻き戻さない幅（日）。時差でずれる日付は最大2日（UTC+14 と UTC-12 の差は26時間）。
+  // それより大きく離れていたら、端末の時計のずれとみなして、ふつうに数え直す（先の日付で解いた記録で、連続が止まったままにならないように）
+  const TZ_SLACK = 2;
+  // その日のうちに開いた事件か。今日の事件を開いたとき、または前に開いたときの記録に「その日のうちに開いた」が残っているとき
+  // （ホームに戻ってから開き直したとき・読み込み直したとき・アプリが落ちて開き直したときも、開いた日の分として数えられるように）
+  function openedOnDayOf(caseDate, todayStr, rec) {
+    return caseDate === todayStr || !!(rec && rec.openedOnDay === true);
+  }
+  // 日替わりの事件を「その日のうちに解いた」と数えるか。当日に解いたとき、
+  // またはその日のうちに開いた事件を、0時をまたいで翌朝3時までに解いたとき（開いた日の分として数える）
+  function countsOnDay(caseDate, openedOnDay, todayStr, hour) {
+    return caseDate === todayStr || (!!openedOnDay && Engine.addDays(caseDate, 1) === todayStr && hour < 3);
+  }
+  // 0時〜3時のあいだ、前の日に開いた日替わりの事件がまだ解けていなければ、その日付（3時までに解けば連続に数える）。無ければ null
+  function pendingDay(daily, todayStr, hour) {
+    if (!(hour < 3)) return null;
+    const y = Engine.addDays(todayStr, -1), r = daily ? daily[y] : null;
+    return r && r.state === 'playing' && r.openedOnDay === true ? y : null;
+  }
+  // 解いたときに連続日数を更新する（st を書き換える）。基準は事件の日付。
+  // 最後に解いた日が事件の日付から TZ_SLACK 日以内の先（西へ移動した・時計を少し戻した）なら、連続も最後に解いた日も巻き戻さない
+  function addStreak(st, caseDate) {
+    const last = st.lastDailyDate;
+    if (last && last >= caseDate && last <= Engine.addDays(caseDate, TZ_SLACK)) return;
+    st.streak = last === Engine.addDays(caseDate, -1) ? st.streak + 1 : 1;
+    st.lastDailyDate = caseDate;
+    st.bestStreak = Math.max(st.bestStreak, st.streak);
+  }
+  // 表示する連続日数。最後に解いた日が今日か昨日なら続いている。
+  // 端末の日付が最後に解いた日より TZ_SLACK 日以内で前に戻った（西へ移動した）ときは、そのまま見せる。
+  // pending（0〜3時に、前の日に開いた事件がまだ間に合う）ときは、最後に解いた日が一昨日でも切れていない
+  function shownStreak(st, todayStr, pending) {
+    const last = st.lastDailyDate, n = st.streak || 0;
+    if (!last) return 0;
+    if (last > todayStr) return last <= Engine.addDays(todayStr, TZ_SLACK) ? n : 0;
+    if (last === todayStr || last === Engine.addDays(todayStr, -1)) return n;
+    return pending && last === Engine.addDays(todayStr, -2) ? n : 0;
+  }
+  // ---- 週（今週の難問）。月曜はじまり・端末のローカル日付。No.1（2026-10-01）を含む週を第1週とする ----
+  const FIRST_WEEK = '2026-09-28';   // 第1週の月曜
+  const utcOf = (ds) => { const p = ds.split('-').map(Number); return Date.UTC(p[0], p[1] - 1, p[2]); };
+  // その日を含む週の月曜。曜日は日付の文字列から UTC で求める（端末の時差・夏時間に左右されない）
+  function mondayOf(ds) {
+    const wd = new Date(utcOf(ds)).getUTCDay();   // 0=日 … 6=土
+    return Engine.addDays(ds, -((wd + 6) % 7));
+  }
+  // 第N週。No.1 より前の日付は No.1 の日に丸めてから数える（＝第1週。日替わりの No. と同じ考え方）
+  function weekNoOf(ds) { return Math.round((utcOf(mondayOf(clampDay(ds))) - utcOf(FIRST_WEEK)) / 604800000) + 1; }
+  const weekMonday = (no) => Engine.addDays(FIRST_WEEK, 7 * (Math.max(1, no) - 1));
+  // 今週の難問の seed（全員・全端末で同じ問題になる。Engine.generate({ seed, people: 9, star: 3 })）
+  const weekSeed = (monday) => 'usotsuki-week-' + monday.replace(/-/g, '');
+  // 「10/12〜10/18」
+  function weekRange(monday) {
+    const md = (s) => +s.slice(5, 7) + '/' + +s.slice(8, 10);
+    return md(monday) + '〜' + md(Engine.addDays(monday, 6));
+  }
+  // 結果・共有に出す名前。今週なら「今週の難問」、終わった週は「週の難問」（共有を見た人に、今週の問題と思わせない）
+  const isThisWeek = (monday, todayStr) => monday === mondayOf(clampDay(todayStr));
+  const weekName = (monday, todayStr) => (isThisWeek(monday, todayStr) ? '今週の難問' : '週の難問');
+  // ---- 事件簿の並び ----
+  // 毎日の事件: 今日から No.1 の日まで（新しい順）
+  function bookDays(todayStr) {
+    const out = [];
+    for (let d = clampDay(todayStr); d >= FIRST_DAY; d = Engine.addDays(d, -1)) out.push(d);
+    return out;
+  }
+  // 今週の難問: 今週から第1週まで（新しい順。月曜の日付）
+  function bookWeeks(todayStr) {
+    const out = [];
+    for (let n = weekNoOf(todayStr); n >= 1; n--) out.push(weekMonday(n));
+    return out;
+  }
+  // 一覧の from〜to-1 番目を、見出し（keyOf が変わる所）つきの行にする。
+  // 前の行と比べて決めるので、「もっと見る」で続きを足しても見出しが重ならない
+  function bookRows(list, from, to, keyOf) {
+    const rows = [];
+    for (let i = Math.max(0, from); i < Math.min(to, list.length); i++) {
+      const k = keyOf(list[i]);
+      if (i === 0 || keyOf(list[i - 1]) !== k) rows.push({ head: k });
+      rows.push({ item: list[i], i });
+    }
+    return rows;
+  }
+  const monthOf = (ds) => ds.slice(0, 7);   // 毎日の事件の見出し（2026-10）
+  const yearOf = (ds) => ds.slice(0, 4);    // 今週の難問の見出し（2026）
+  // ==DAYRULES END==
+  // ==TUTORIAL START== はじめての事件（3話）。問題は固定（seed と遊び方の例題）。Engine だけを使う（tools/check-app.mjs が取り出して、問題と案内の文が合っているかを確かめる）
+  // エンジンの作り方が変わる（VERSION を上げる）と、同じ seed でも別の問題になる。そのときは check-app のハッシュが FAIL するので、seed を選び直し、案内の文も直す
+  // steps[j]: 次に手順 j を考える場面の案内（Engine.hint が返す手順の番号）。名前は問題の中の名前をそのまま使う
+  const TUTORIAL = [
+    { ep: 1, name: '判子を押してみよう', short: '判子を押す', seed: 'tut1-12350', people: 3, star: 1, hash: 'a124d5ee3843d7ad',   // 消えたはちみつのつぼ
+      lead: '村人は正直者か嘘つきのどちらか。正直者の証言は本当、嘘つきの証言はウソです。犯人は1人。わかった人から順に、判子を押していきましょう。',
+      steps: [
+        'メモは必ず本当です。メモを見て、スズのカードの［正直者］を押しましょう。',
+        'スズは正直者なので、スズの証言は本当。ナギはどちらでしょう。',
+        'ナギは嘘つき。嘘つきの証言はウソなので、言っていることの逆が答えです。',
+        'ミオは正直者。ミオの証言から、犯人に［犯人］の判子を押しましょう。',
+      ],
+      solved: 'メモ → わかった人の証言 → 次の人、の順にたどれば解けます。' },
+    { ep: 2, name: 'つながりをたどる', short: 'つながりをたどる', seed: 'tut2-148489', people: 4, star: 1, hash: '6fc9f17624140af2',   // 風見鶏に乗った村長の帽子
+      lead: '1人わかると、その人の証言から次の人がわかります。この事件は上から順には進みません。証言の中の名前を押すと、その人のカードへ移動します。',
+      steps: [
+        'メモはいちばん下のハルのこと。ハルから始めましょう。',
+        'ハルは正直者。ハルの証言から、サクがわかります。',
+        '「同じ側」は、2人とも正直者か、2人とも嘘つき。ハルと同じ側のリツは？',
+        'リツは正直者。リツの証言で犯人がわかります。正直者が犯人のこともあります。',
+        'オトはまだわかりません。でも、オトの証言が本当かウソかは決められます。本当なら正直者、ウソなら嘘つき。',
+      ],
+      solved: 'わかった人から次の人へ。つながりを追えば、どこからでも解けます。' },
+    { ep: 3, name: '仮定を置く', short: '仮定を置く', example: true, hash: '3f21e160bab4cb8a',   // Engine.example()（消えたクリームパン）
+      // 例題のパン屋のアオイが、自分の店のパンの事件の犯人にならないように、あらましだけ差し替える（問題は変えない）
+      story: '村の朝市の屋台から、焼きたてのクリームパンが消えた。容疑者は4人。犯人は1人だけ。',
+      lead: 'この事件には村長のメモがありません。だれか1人を「もし嘘つきだったら」と仮に決めて、先を考えます。食い違ったら、仮に決めたことの逆が答えです。',
+      steps: [
+        'イツキを嘘つきだと仮に決めて、1人ずつたどりましょう。イツキの［嘘つき］を、仮に押してみましょう（あとで直せます）。',
+        'イツキは正直者。エマの「イツキは正直者なんだ」は本当。エマは？',
+        'エマは正直者。ウタの「エマは正直者よ」も本当です。',
+        'イツキの「犯人は嘘つきだ」は本当。嘘つきはだれでしょう。その人が犯人です。',
+      ],
+      // イツキの［嘘つき］を仮に押したあとの案内。上から順に、まだそろっていない所を出す。
+      // off: 仮定と逆の判子（エマを正直者にした、犯人を別の人にしたなど）が押されているときの案内
+      hypo: { p: 1, v: 'L', seq: [
+        { p: 3, v: 'L', text: '仮に、イツキは嘘つき。するとエマの「イツキは正直者なんだ」はウソ。エマは？',
+          off: 'イツキが嘘つきなら、エマの「イツキは正直者なんだ」はウソ。仮定のままだと、エマは嘘つきです。' },
+        { p: 2, v: 'L', text: 'エマが嘘つきなら、ウタの「エマは正直者よ」もウソ。ウタは？',
+          off: 'エマが嘘つきなら、ウタの「エマは正直者よ」もウソ。仮定のままだと、ウタは嘘つきです。' },
+        { p: 0, v: 'H', c: 0, text: 'イツキの「犯人は嘘つきだ」がウソなら、犯人は正直者。嘘つきの3人は犯人になれないので、残るアオイを正直者・犯人にして、提出してみましょう。',
+          off: 'イツキの「犯人は嘘つきだ」がウソなら、犯人は正直者。嘘つきの3人は犯人になれないので、仮定のままだと、アオイが正直者で犯人です。' },
+      ],
+        ready: '仮に押した判子がそろいました。［推理を提出］で、食い違いが出るか確かめましょう（ここではミスに数えません）。',
+        wrong: '食い違いが出ました。つまり「イツキは嘘つき」が間違いです。イツキを正直者にして、たどり直しましょう。' },
+      solved: '仮定を1回置けば★2、何回か重ねれば★3の事件も解けます。本番では、食い違いを頭の中で確かめてから提出すると、ミスになりません。' },
+  ];
+  const TUTORIAL_HASH = '44d921d916798acb5c5089c47d182a1b';   // 3話の問題（JSON.stringify(pz) + '\n' をつないだ sha256 の先頭32文字）
+  // 第 ep 話の問題（エンジンが作ったまま。あらましの差し替えは画面側でする）
+  function tutorialPuzzle(ep) {
+    const t = TUTORIAL[ep - 1];
+    return t.example ? Engine.example() : Engine.generate({ seed: t.seed, people: t.people, star: t.star });
+  }
+  // ==TUTORIAL END==
+
   /* ---------- 保存（localStorage。使えなくても遊べる。iOS アプリでは Preferences にも二重に保存） ---------- */
+  // ==STORE START== 保存の読み書き（既定の形・読み込みの検査・別タブとの重ね合わせ）。tools/check-app.mjs が取り出して、壊れた保存や古い版の保存で動かして確かめる
   const KEY = 'usotsuki.v1';
   const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
   const defaults = () => ({
@@ -2345,6 +2592,10 @@ if (typeof module !== 'undefined') module.exports = Engine;
     daily: {},
     practice: { byStar: { 1: null, 2: null, 3: null }, hard: null, solved: 0 },
     stats: { streak: 0, bestStreak: 0, lastDailyDate: null, totalSolved: 0, perfect: 0 },
+    // 今週の難問。キーはその週の月曜の日付。中身は日替わりと同じ形（途中・解決）。解いた週の数はここから数える
+    weekly: {},
+    // はじめての事件。done: 解いた話の数（0〜3。いちばん進んだ所）、dismissed: ホームの案内を閉じた、cur: 途中の話（{ ep, 判子… }）
+    tutorial: { done: 0, dismissed: false, cur: null },
   });
   // 保存データは中身の型を確かめてから使う（壊れていても NaN や文字のつながりを出さない）
   const isObj = (x) => !!x && typeof x === 'object' && !Array.isArray(x);
@@ -2354,6 +2605,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
   };
   const cnt = (x) => Math.max(0, Math.floor(num(x, 0)));
   const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+  // 実在する日付か（形だけでなく、2026-13-01・2026-02-30 などを外す）
+  const realDate = (k) => { if (typeof k !== 'string' || !DATE_RE.test(k)) return false; try { return Engine.addDays(k, 0) === k; } catch (e) { return false; } };
   function cleanPlay(r) {   // 1件分の途中・結果（日替わり・練習で共通の項目）
     return {
       marks: Array.isArray(r.marks) ? r.marks.slice(0, 9).map((m) => (m === 'H' || m === 'L' ? m : null)) : [],
@@ -2406,6 +2659,25 @@ if (typeof module !== 'undefined') module.exports = Engine;
       if (isObj(h) && (typeof h.seed === 'string' || typeof h.seed === 'number') && Number.isInteger(h.people) && h.people >= 7 && h.people <= 9) {
         d.practice.hard = Object.assign({ seed: h.seed, star: 3, people: h.people }, cleanPlay(h));
       }
+    }
+    if (isObj(o.weekly)) {
+      // 1件ずつ読む。形は合っていても実在しない日付（2026-10-32 など）は、日付の計算に渡す前に捨てる。
+      // 読めない1件のために記録全体が読めなくならないように（読めないと空の記録で始まり、次の保存で全部消える）、1件ごとに try で囲む
+      Object.keys(o.weekly).forEach((k) => {
+        try {
+          const r = o.weekly[k];
+          if (!realDate(k) || k < FIRST_WEEK || mondayOf(k) !== k || !isObj(r) || (r.state !== 'playing' && r.state !== 'solved')) return;
+          const x = Object.assign({ state: r.state }, cleanPlay(r));
+          if (typeof r.title === 'string') x.title = r.title.slice(0, 80);
+          d.weekly[k] = x;
+        } catch (e) { /* この1件だけ捨てる */ }
+      });
+    }
+    if (isObj(o.tutorial)) {
+      const t = o.tutorial;
+      d.tutorial.done = Math.min(TUTORIAL.length, cnt(t.done));
+      d.tutorial.dismissed = t.dismissed === true;
+      if (isObj(t.cur) && Number.isInteger(t.cur.ep) && t.cur.ep >= 1 && t.cur.ep <= TUTORIAL.length) d.tutorial.cur = Object.assign({ ep: t.cur.ep }, cleanPlay(t.cur));
     }
     if (isObj(o.stats)) {
       const st = o.stats;
@@ -2465,59 +2737,30 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (storeOK) {
       // 保存が丸ごと消えていた（iOS が WebView の保存を消したなど）ときは読み直さず、手元の記録に重ねて書き戻す
       let raw = null; try { raw = localStorage.getItem(KEY); } catch (e) { raw = null; }
-      if (raw) { const fresh = readStore(); if (fresh) S = fresh; }
+      if (raw) { const fresh = readStore(); if (fresh) S = carryNew(fresh, S); }
     }
     fn(S);
     persist();
   }
+  // 古い版のタブ（今週の難問・はじめての事件を知らない）が同時に開いていると、その保存でこの2つが消える。
+  // 読み直した記録に無く手元にあるものは、記録を消した回（epoch）が同じなら戻す（どちらも、消す以外で減ることは無い）
+  function carryNew(fresh, mine) {
+    if (!mine || (fresh.epoch || '') !== (mine.epoch || '')) return fresh;
+    Object.keys(mine.weekly || {}).forEach((k) => {
+      const a = fresh.weekly[k], b = mine.weekly[k];
+      if (!a || (a.state !== 'solved' && b.state === 'solved')) fresh.weekly[k] = b;
+    });
+    const ft = fresh.tutorial, mt = mine.tutorial;
+    if (mt) {
+      if (mt.done > ft.done) ft.done = mt.done;
+      if (mt.dismissed) ft.dismissed = true;
+      if (!ft.cur && mt.cur && mt.cur.ep > ft.done) ft.cur = mt.cur;
+    }
+    return fresh;
+  }
+  // ==STORE END==
 
   /* ---------- 日付と表示の小物 ---------- */
-  const WD = ['日', '月', '火', '水', '木', '金', '土'];
-  // ==DAYRULES START== 日付と連続日数の決まり。Engine と引数だけを使う（tools/check-app.mjs がここを取り出して検査する）
-  const FIRST_DAY = '2026-10-01';   // No.1 の日
-  // 端末の日付を「今日」にする。No.1 より前なら No.1 の日として扱う（時計がずれた端末で No.-5 などを出さない）
-  const clampDay = (d) => (d < FIRST_DAY ? FIRST_DAY : d);
-  // 丸める前の端末の日付が No.1 より前か（そのときはホームと事件簿に「日付を確かめてください」を出す）
-  const clockBehind = (raw) => raw < FIRST_DAY;
-  // 日付が戻っても連続を巻き戻さない幅（日）。時差でずれる日付は最大2日（UTC+14 と UTC-12 の差は26時間）。
-  // それより大きく離れていたら、端末の時計のずれとみなして、ふつうに数え直す（先の日付で解いた記録で、連続が止まったままにならないように）
-  const TZ_SLACK = 2;
-  // その日のうちに開いた事件か。今日の事件を開いたとき、または前に開いたときの記録に「その日のうちに開いた」が残っているとき
-  // （ホームに戻ってから開き直したとき・読み込み直したとき・アプリが落ちて開き直したときも、開いた日の分として数えられるように）
-  function openedOnDayOf(caseDate, todayStr, rec) {
-    return caseDate === todayStr || !!(rec && rec.openedOnDay === true);
-  }
-  // 日替わりの事件を「その日のうちに解いた」と数えるか。当日に解いたとき、
-  // またはその日のうちに開いた事件を、0時をまたいで翌朝3時までに解いたとき（開いた日の分として数える）
-  function countsOnDay(caseDate, openedOnDay, todayStr, hour) {
-    return caseDate === todayStr || (!!openedOnDay && Engine.addDays(caseDate, 1) === todayStr && hour < 3);
-  }
-  // 0時〜3時のあいだ、前の日に開いた日替わりの事件がまだ解けていなければ、その日付（3時までに解けば連続に数える）。無ければ null
-  function pendingDay(daily, todayStr, hour) {
-    if (!(hour < 3)) return null;
-    const y = Engine.addDays(todayStr, -1), r = daily ? daily[y] : null;
-    return r && r.state === 'playing' && r.openedOnDay === true ? y : null;
-  }
-  // 解いたときに連続日数を更新する（st を書き換える）。基準は事件の日付。
-  // 最後に解いた日が事件の日付から TZ_SLACK 日以内の先（西へ移動した・時計を少し戻した）なら、連続も最後に解いた日も巻き戻さない
-  function addStreak(st, caseDate) {
-    const last = st.lastDailyDate;
-    if (last && last >= caseDate && last <= Engine.addDays(caseDate, TZ_SLACK)) return;
-    st.streak = last === Engine.addDays(caseDate, -1) ? st.streak + 1 : 1;
-    st.lastDailyDate = caseDate;
-    st.bestStreak = Math.max(st.bestStreak, st.streak);
-  }
-  // 表示する連続日数。最後に解いた日が今日か昨日なら続いている。
-  // 端末の日付が最後に解いた日より TZ_SLACK 日以内で前に戻った（西へ移動した）ときは、そのまま見せる。
-  // pending（0〜3時に、前の日に開いた事件がまだ間に合う）ときは、最後に解いた日が一昨日でも切れていない
-  function shownStreak(st, todayStr, pending) {
-    const last = st.lastDailyDate, n = st.streak || 0;
-    if (!last) return 0;
-    if (last > todayStr) return last <= Engine.addDays(todayStr, TZ_SLACK) ? n : 0;
-    if (last === todayStr || last === Engine.addDays(todayStr, -1)) return n;
-    return pending && last === Engine.addDays(todayStr, -2) ? n : 0;
-  }
-  // ==DAYRULES END==
   const today = () => clampDay(Engine.localDateStr(new Date()));
   function parseD(ds) { const p = ds.split('-').map(Number); return { y: p[0], m: p[1], d: p[2], wd: new Date(p[0], p[1] - 1, p[2]).getDay() }; }
   function dateLabel(ds) { const p = parseD(ds); return p.m + '月' + p.d + '日（' + WD[p.wd] + '）'; }
@@ -2878,6 +3121,13 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const re = new RegExp(vs.map((v) => v.name).join('|'), 'g');
     return h.replace(re, (m) => { const v = vs.find((x) => x.name === m); return '<b class="nmx" style="--pc:var(--p' + v.color + ')">' + m + '</b>'; });
   }
+  // はじめての事件の案内: 名前を押すと、その人のカードへ移動する（証言の中の名前と同じ .nm。カードが画面の下にあっても探さずに済む）
+  function nameLinks(pz, text) {
+    const vs = pz.villagers.map((v, i) => ({ name: v.name, color: v.color, i })).sort((a, b) => b.name.length - a.name.length);
+    if (!vs.length) return esc(text);
+    const re = new RegExp(vs.map((v) => v.name).join('|'), 'g');
+    return esc(text).replace(re, (m) => { const v = vs.find((x) => x.name === m); return '<button type="button" class="nm" data-p="' + v.i + '" style="--pc:var(--p' + v.color + ')">' + m + '</button>'; });
+  }
   function emphasize(html) {
     const k = html.lastIndexOf('→');
     if (k >= 0) return html.slice(0, k) + '<span class="arrow">→</span><strong>' + html.slice(k + 1).trim() + '</strong>';
@@ -2903,7 +3153,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     cur = v;
     document.body.dataset.view = v;
     if (v === 'home') renderHome();
-    if (v === 'book') renderBook();
+    if (v === 'book') { if (!opt.restore) book.shown = { days: BOOK_FIRST, weeks: BOOK_FIRST }; renderBook(); }
     if (v === 'howto') renderHowto();
     if (v === 'settings') { confirmOpen = false; renderSettings(); }
     if (v === 'play') { if (P && P.ready) renderBar(); timerStart(); }
@@ -3008,6 +3258,64 @@ if (typeof module !== 'undefined') module.exports = Engine;
       if (slot === 'hard' && !hardReady()) b.insertAdjacentHTML('beforeend', '<span class="badge soon">準備中</span>');
       else if (touched(pracGet(S, slot))) b.insertAdjacentHTML('beforeend', '<span class="badge">途中</span>');
     });
+    renderTutCard();
+    renderWeekCard();
+  }
+
+  /* はじめての事件（ホームの案内・遊び方のボタン） */
+  // 次に開く話: 途中の話、なければまだ解いていない次の話。3話とも解いて途中も無ければ null
+  function tutNext() { const t = S.tutorial; return t.cur ? t.cur.ep : t.done < TUTORIAL.length ? t.done + 1 : null; }
+  const tutStarted = () => !!S.tutorial.cur || S.tutorial.done > 0;
+  const weeksSolved = (s) => Object.keys(s.weekly).filter((k) => s.weekly[k].state === 'solved').length;
+  // ホームに「はじめての方へ」を出すか。まだ1件も解いていない人（今日の事件を開いただけでは消さない。審査の人が開いて戻っても出る）か、
+  // はじめての事件を進めている人。閉じた・3話とも解いたら出さない
+  function showTutCard() {
+    const t = S.tutorial;
+    if (t.dismissed || t.done >= TUTORIAL.length) return false;
+    const solvedAny = (S.stats.totalSolved || 0) > 0 || (S.practice.solved || 0) > 0 || weeksSolved(S) > 0;
+    return !solvedAny || tutStarted();
+  }
+  // 3話の進み具合（解いた話は朱の丸、次に開く話は藍の輪）
+  function tutStepsHTML() {
+    const t = S.tutorial, nx = tutNext();
+    return '<ol class="tc-steps">' + TUTORIAL.map((x) => {
+      const ok = x.ep <= t.done, now = x.ep === nx;
+      return '<li class="' + (ok ? 'ok' : '') + (now ? ' now' : '') + '"><i aria-hidden="true">' + x.ep + '</i><span>' + esc(x.short) +
+        '<span class="vh">' + (ok ? '（解決）' : now ? '（次の話）' : '') + '</span></span></li>';
+    }).join('') + '</ol>';
+  }
+  function renderTutCard() {
+    const el = $('#tutCard');
+    if (!showTutCard()) { el.hidden = true; el.innerHTML = ''; return; }
+    const nx = tutNext();
+    el.className = 'tut-card';
+    el.setAttribute('role', 'region'); el.setAttribute('aria-labelledby', 'tcTitle');
+    el.innerHTML = '<p class="eyebrow">はじめての方へ</p>' +
+      '<button class="icon-btn tc-x" type="button" data-tut="dismiss" aria-label="この案内を閉じる">' + icon('i-x') + '</button>' +
+      '<h2 class="tc-h" id="tcTitle">はじめての事件<small>3問・約5分</small></h2>' +
+      '<p class="tc-d">判子の押し方から、仮定の置き方まで。</p>' + tutStepsHTML() +
+      '<button class="btn btn-pri btn-wide" type="button" data-tut="go">' + icon('i-search') + (tutStarted() ? '第' + nx + '話から続ける' : 'はじめる') + '</button>';
+    el.hidden = false;
+  }
+
+  /* 今週の難問（ホームのカード） */
+  function weekStatusHTML(rec, seal) {
+    if (rec && rec.state === 'solved') return (seal ? '<span class="mini-seal">' + solvedSealSVG(26) + '</span>' : '') + triesHTML(rec.attempts, 6) + '<span>' + (rec.attempts || '').length + '回目で解決・' + fmtTime(rec.elapsed) + '</span>';
+    if (rec && rec.state === 'playing') return '<span class="chip go">' + icon('i-pen') + '捜査の途中</span><span class="tnum">' + fmtTime(rec.elapsed) + '・ミス' + (rec.mistakes || 0) + '</span>';
+    return '<span class="chip">未解決</span><span>仮定を重ねて、じっくり</span>';
+  }
+  function renderWeekCard() {
+    const t = today(), m = mondayOf(t), no = weekNoOf(t);
+    const rec = liveRec(S.weekly[m]);
+    const title = rec && rec.title;
+    const solved = !!(rec && rec.state === 'solved');
+    $('#weekBox').innerHTML = '<button class="wk' + (solved ? ' is-solved' : '') + '" type="button" data-week="' + m + '">' +
+      '<span class="ph-num" aria-hidden="true"><b>9</b>人</span>' +
+      // 練習の「難問」（毎回ちがう9人の事件）と見分けられるように、全員共通で週替わりなことを札で出す
+      '<span class="wk-body"><span class="wk-tag">全員共通・月曜に入れ替わり</span><span class="wk-top"><b>第' + no + '週</b><span class="wk-range">' + weekRange(m) + '</span>' + starsHTML(3) + '</span>' +
+      '<span class="wk-title' + (title ? '' : ' wait') + '">' + esc(title || '容疑者9人の大事件') + '</span>' +
+      '<span class="wk-st">' + (hardReady() ? weekStatusHTML(rec, true) : '<span class="chip">準備中</span>') + '</span></span>' +
+      icon('i-chev', 'wk-go') + '</button>';
   }
 
   // 問題の作り方が変わる前の途中は、開くと最初からになるので「未解決」として見せる
@@ -3049,6 +3357,14 @@ if (typeof module !== 'undefined') module.exports = Engine;
         if (P.openedOnDay || (old && old.openedOnDay === true)) rec.openedOnDay = true;
         if (P.state === 'solved' && P.streakAtSolve != null) rec.streak = P.streakAtSolve;
         s.daily[P.date] = rec;
+      } else if (P.mode === 'weekly') {
+        // 今週の難問: 開いた週の月曜の記録に（月曜0時をまたいでも、その週の記録のまま）。解決済みは上書きしない
+        const old = s.weekly[P.week];
+        if (old && old.state === 'solved') return;
+        s.weekly[P.week] = Object.assign({ state: P.state }, playRec(el), { title: P.pz.story.title });
+      } else if (P.mode === 'tutorial') {
+        // はじめての事件: 途中の判子だけ残す（ミス・ヒント・時間は記録に数えない）。解いたら onSolved で消す
+        if (P.state === 'playing') s.tutorial.cur = Object.assign({ ep: P.ep }, playRec(el));
       } else if (P.state === 'playing') {
         pracSet(s, P.slot, Object.assign({ seed: P.seed, star: P.star, people: P.people }, playRec(el)));
       }
@@ -3177,9 +3493,14 @@ if (typeof module !== 'undefined') module.exports = Engine;
     go('play', { loading: true });
     $('#playBar').hidden = true;
     renderRoster();
-    const heavy = spec.mode === 'practice' && spec.people >= 7;
+    const weekly = spec.mode === 'weekly', tut = spec.mode === 'tutorial';
+    // 今週の難問: その週の月曜で決まる seed の9人・★3（全員・全端末で同じ問題。練習の難問と同じく Worker で作る）
+    if (weekly) Object.assign(spec, { seed: weekSeed(spec.week), people: 9, star: 3 });
+    const heavy = (spec.mode === 'practice' && spec.people >= 7) || weekly;
     $('#playBody').innerHTML = loadingHTML(heavy);
-    setTop(spec.mode === 'daily' ? 'No.' + Engine.dailyConfig(spec.date).no : spec.slot === 'hard' ? '難問' : '練習', spec.star || (spec.mode === 'daily' ? Engine.dailyConfig(spec.date).star : 0));
+    // はじめての事件では、時間とミスを出さない（記録に数えないため）
+    $('#v-play .topbar').classList.toggle('tut', tut);
+    setTop(topLabelOf(spec), spec.star || (spec.mode === 'daily' ? Engine.dailyConfig(spec.date).star : 0));
     $('#tbClock').textContent = '0:00'; $('#tbMiss').textContent = '0';
     const t0 = performance.now();
     if (heavy) {
@@ -3206,7 +3527,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       fired = true;
       let pz;
       try {
-        pz = spec.mode === 'daily' ? Engine.daily(spec.date) : Engine.generate({ seed: spec.seed, people: spec.people, star: spec.star });
+        pz = spec.mode === 'daily' ? Engine.daily(spec.date) : tut ? tutorialPuzzle(spec.ep) : Engine.generate({ seed: spec.seed, people: spec.people, star: spec.star });
         // 練習の新しい事件は、直前の練習と同じ題名なら作り直す（続けて同じ事件名が出ないように）
         for (let k = 0; k < 4 && spec.mode === 'practice' && !spec.resume && spec.avoid && pz.story.title === spec.avoid; k++) {
           spec.seed = practiceSeed();
@@ -3240,6 +3561,15 @@ if (typeof module !== 'undefined') module.exports = Engine;
       if (P.state === 'solved' && P.solvedOnDay) {
         P.streakAtSolve = Number.isInteger(rec.streak) ? rec.streak : S.stats.lastDailyDate === spec.date ? S.stats.streak : null;
       }
+    } else if (spec.mode === 'weekly') {
+      const rec = S.weekly[spec.week];
+      base = rec || {};
+      P = { mode: 'weekly', week: spec.week, weekNo: weekNoOf(spec.week), from: spec.from || 'home', pz, state: rec && rec.state === 'solved' ? 'solved' : 'playing' };
+    } else if (spec.mode === 'tutorial') {
+      const t = TUTORIAL[spec.ep - 1];
+      if (t.story) pz.story = Object.assign({}, pz.story, { text: t.story });   // あらましだけ差し替える（問題は変えない）
+      base = spec.resume || {};
+      P = { mode: 'tutorial', ep: spec.ep, tut: t, from: spec.from || 'home', pz, state: 'playing' };
     } else {
       base = spec.resume || {};
       const slot = spec.slot === 'hard' ? 'hard' : spec.star;
@@ -3254,7 +3584,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
       marks: okMarks(b.marks), culprit: okC(b.culprit), mistakes: cnt(b.mistakes), hints: cnt(b.hints),
       attempts: typeof b.attempts === 'string' ? b.attempts : '', elapsed: Math.max(0, num(b.elapsed, 0)),
       hintSeen: Array.isArray(b.hintSeen) ? b.hintSeen.slice() : [], seenSteps: Array.isArray(b.seenSteps) ? b.seenSteps.slice() : [],
-      lastWrong: typeof b.lastWrong === 'string' ? b.lastWrong : null, lockUntil: 0, storyOpen: true, ready: true,
+      // はじめての事件は、あらましをたたんで始める（練習することと案内を、開いてすぐの画面に入れるため）
+      lastWrong: typeof b.lastWrong === 'string' ? b.lastWrong : null, lockUntil: 0, storyOpen: spec.mode !== 'tutorial', ready: true,
     });
     if (P.state === 'solved') { P.marks = pz.solution.status.slice(); P.culprit = pz.solution.culprit; }
     if (P.date) titleCache[P.date] = pz.story.title;
@@ -3264,7 +3595,33 @@ if (typeof module !== 'undefined') module.exports = Engine;
     timerStart();
   }
 
-  function caseLabel() { return P.mode === 'daily' ? 'No.' + P.pz.no : P.hard ? '難問' : '練習'; }
+  // 結果・解説・共有の文に出す事件の名前
+  function caseLabel() {
+    if (P.mode === 'daily') return 'No.' + P.pz.no;
+    // 終わった週は「週の難問 第1週 9/28〜10/4」（いつの週かを添える）
+    if (P.mode === 'weekly') return weekName(P.week, today()) + ' 第' + P.weekNo + '週' + (isThisWeek(P.week, today()) ? '' : ' ' + weekRange(P.week));
+    if (P.mode === 'tutorial') return 'はじめての事件 第' + P.ep + '話';
+    return P.hard ? '難問' : '練習';
+  }
+  // 上部（時間・ミスの横）に出す短い名前
+  function topLabelOf(spec) {
+    if (spec.mode === 'daily') return 'No.' + Engine.dailyConfig(spec.date).no;
+    if (spec.mode === 'weekly') return weekName(spec.week, today());
+    if (spec.mode === 'tutorial') return 'はじめての事件 第' + spec.ep + '話';
+    return spec.slot === 'hard' ? '難問' : '練習';
+  }
+  // 解いたあとの［次へ］の文字（練習は次の事件、はじめての事件は次の話。3話目のあとは今日の事件）
+  function nextLabel() {
+    if (P && P.mode === 'tutorial') return P.ep < TUTORIAL.length ? '第' + (P.ep + 1) + '話へ' : '今日の事件へ';
+    return '次の事件';
+  }
+  function nextCase() {
+    if (!P) return;
+    if (P.mode === 'tutorial') {
+      if (P.ep < TUTORIAL.length) openTutorial(P.ep + 1);
+      else openCase({ mode: 'daily', date: today(), from: 'home' });
+    } else if (P.mode === 'practice') newPractice(P.slot);
+  }
   // 7人以上はカードをつめて並べ、見出しの下に名簿（名前と判子の印。押すとそのカードへ）を出す
   const DENSE_FROM = 7;
   function renderRoster() {
@@ -3286,17 +3643,26 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const pz = P.pz;
     const solved = P.state === 'solved';
     const hasCount = pz.statements.some((s) => s.type === 'HONESTCOUNT');
+    const tut = P.mode === 'tutorial';
+    const kind = P.mode === 'daily' ? esc(dateLabel(P.date)) : P.mode === 'weekly' ? '第' + P.weekNo + '週（' + weekRange(P.week) + '）'
+      : tut ? 'はじめての事件（記録には数えません）' : P.hard ? '難問（練習）' : '練習用の事件';
     let h = '<div class="case-head">' +
-      '<div class="ch-line"><span>' + (P.mode === 'daily' ? esc(dateLabel(P.date)) : P.hard ? '難問（練習）' : '練習用の事件') + '</span><span class="sep"></span>' +
+      '<div class="ch-line"><span>' + kind + '</span><span class="sep"></span>' +
       starsHTML(pz.star) + '<span class="sep"></span><span>容疑者' + pz.people + '人</span></div>' +
       '<h1 class="ch-title">' + esc(pz.story.title) + '</h1>' +
       '<div class="ch-story" id="chStory"' + (P.storyOpen ? '' : ' hidden') + '><p>' + esc(pz.story.text) + '</p></div>' +
       '<button type="button" class="linkish" id="storyToggle" aria-controls="chStory" aria-expanded="' + P.storyOpen + '">' + (P.storyOpen ? 'あらましをたたむ' : 'あらましを読む') + icon('i-down') + '</button>' +
       (solved ? '<div class="ch-seal" id="chSeal">' + solvedSealSVG() + '</div>' : '') +
       '</div>' +
-      '<div class="rules"><p><b>正直者</b>は本当のことだけ、<b>嘘つき</b>はウソだけを話す。犯人は1人。</p>' +
-      '<p>同じ側＝2人とも正直者か、2人とも嘘つき。違う側＝片方が正直者で、片方が嘘つき。</p>' +
-      (hasCount ? '<p>「正直者はちょうど〇人」は、話した本人も入れた全員で数える。</p>' : '') + '</div>';
+      // はじめての事件では、きまりの箱は出さない（練習することの箱と同じ文になり、最初の一手が画面の下に押し出されるため。
+      // 「同じ側」「違う側」は、初めて出る証言の下に意味を添えている）
+      (tut ? '<section class="tut-lead" aria-labelledby="tlTitle"><p class="tl-k" id="tlTitle">第' + P.ep + '話で練習すること<b>' + esc(P.tut.name) + '</b></p><p>' + richText(pz, P.tut.lead) + '</p>' +
+        (hasCount ? '<p>「正直者はちょうど〇人」は、話した本人も入れた全員で数えます。</p>' : '') + '</section>'
+        : '<div class="rules"><p><b>正直者</b>は本当のことだけ、<b>嘘つき</b>はウソだけを話す。犯人は1人。</p>' +
+        '<p>同じ側＝2人とも正直者か、2人とも嘘つき。違う側＝片方が正直者で、片方が嘘つき。</p>' +
+        (hasCount ? '<p>「正直者はちょうど〇人」は、話した本人も入れた全員で数える。</p>' : '') + '</div>');
+    // はじめての事件の案内。盤面の上に置き、下へ読み進めても上に付いてくる（判子を押すたびに中身を差し替える）
+    if (tut) h += '<div class="guide" id="tutGuide" role="status" aria-live="polite"><p class="gd-k"><span class="gd-ic">' + icon('i-bulb') + '</span><span id="gdKind">案内</span></p><p class="gd-t" id="gdText"></p></div>';
     if (pz.given) {
       h += '<aside class="memo" id="memo">' + memoSealSVG() + '<div><p class="mk-k">確かな手がかり</p><p class="mk-t">' + partsHTML(pz, pz.given.parts, pz.given.text) + '</p></div></aside>';
     }
@@ -3306,8 +3672,9 @@ if (typeof module !== 'undefined') module.exports = Engine;
     $('#playBody').innerHTML = h;
     renderRoster();
     for (let i = 0; i < pz.people; i++) updateCard(i);
-    setTop(caseLabel(), pz.star);
+    setTop(topLabelOf(P), pz.star);
     renderBar();
+    if (tut) { $('#v-play').style.setProperty('--tb-h', $('#v-play .topbar').offsetHeight + 'px'); renderGuide('start'); }
   }
   // その問題で「同じ側」「違う側」が初めて出る証言の下に、言葉の意味を小さく添える
   function sideNote(pz, s) {
@@ -3363,7 +3730,11 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const bar = $('#playBar');
     bar.hidden = false;
     if (P.state === 'solved') {
-      if (P.mode === 'practice') {
+      if (P.mode === 'tutorial') {
+        bar.className = 'bar two';
+        bar.innerHTML = '<button class="btn" type="button" id="btnExplain">' + icon('i-book') + '解説を見る</button>' +
+          '<button class="btn btn-pri" type="button" id="btnNext">' + nextLabel() + icon('i-next') + '</button>';
+      } else if (P.mode === 'practice') {
         bar.className = 'bar three';
         bar.innerHTML = '<button class="btn" type="button" id="btnExplain">解説を見る</button>' +
           '<button class="btn" type="button" id="btnResult">結果を見る</button>' +
@@ -3406,6 +3777,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (stamped) { sfx('stamp'); buzz('stamp'); } else sfx('clear');
     updateSubmit();
     saveProgress();
+    if (P.mode === 'tutorial') renderGuide('mark');
   }
 
   function clearContra() {
@@ -3413,7 +3785,9 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const memo = $('#memo'); if (memo) memo.classList.remove('is-contra');
   }
   function scrollToEl(el) {
-    const tb = $('#v-play .topbar').getBoundingClientRect().bottom;
+    // はじめての事件の案内は上に付いてくるので、その下までを隠れる場所とみなす
+    const gd = $('#tutGuide');
+    const tb = $('#v-play .topbar').getBoundingClientRect().bottom + (gd && el !== gd ? gd.offsetHeight + 8 : 0);
     const sheet = $('#sheet');
     const bottomLimit = window.innerHeight - $('#playBar').offsetHeight - (sheet.hidden ? 0 : sheet.offsetHeight) - 8;
     const r = el.getBoundingClientRect();
@@ -3439,6 +3813,53 @@ if (typeof module !== 'undefined') module.exports = Engine;
     m.classList.remove('is-focus', 'shake'); void m.offsetWidth; m.classList.add('is-focus');
     setTimeout(() => m.classList.remove('is-focus'), 2600);
     scrollToEl(m);
+  }
+
+  /* はじめての事件の案内。evt: start（開いたとき）/ mark（判子を押した）/ wrong（提出して食い違った）/ solved */
+  function tutGuide(evt) {
+    const t = P.tut;
+    if (P.state === 'solved') return { kind: '解決', text: '第' + P.ep + '話 解決。' + t.solved, tone: 'ok' };
+    // 第3話: イツキの［嘘つき］を仮に押している間は、その仮定のままたどる案内を出す（見直しのヒントにしない）
+    const hy = t.hypo;
+    if (hy && P.marks[hy.p] === hy.v) {
+      if (evt === 'wrong') return { kind: '仮定の食い違い', text: hy.wrong, tone: 'warn', focus: [hy.p] };
+      // 仮定と逆の判子が押されていたら、先にそれを知らせる（「エマは？」のままにしない）
+      const off = hy.seq.find((x) => (P.marks[x.p] && P.marks[x.p] !== x.v) || (x.c != null && P.culprit != null && P.culprit !== x.c));
+      if (off) return { kind: '仮定と合いません', text: off.off, tone: 'warn', focus: [off.p] };
+      const nx = hy.seq.find((x) => P.marks[x.p] !== x.v || (x.c != null && P.culprit !== x.c));
+      if (nx) return { kind: '仮定', text: nx.text, tone: 'hypo', focus: [nx.p] };
+      // そろった判子が、前に提出して食い違った答えと同じ（押し直した・開き直した）なら、提出はできないので食い違いの続きを出す
+      if (sameAsWrong()) return { kind: '仮定の食い違い', text: hy.wrong, tone: 'warn', focus: [hy.p] };
+      return { kind: '仮定', text: hy.ready, tone: 'hypo', focus: [] };
+    }
+    let r = null;
+    try { r = hintFor(1); } catch (e) { r = null; }
+    if (!r || typeof r.text !== 'string') return { kind: '案内', text: t.steps[0], tone: '' };
+    if (r.kind === 'done') return { kind: '案内', text: '全員の判定と犯人がそろいました。［推理を提出］を押しましょう。', tone: '' };
+    const j = Array.isArray(r.steps) && r.steps.length ? r.steps[r.steps.length - 1] : r.step;
+    // 見直し: その手の考え方（解説の「→」の前。文が途中で切れる手は案内の文）を添える。第1話は判子の付け替え方も
+    if (r.kind === 'review') {
+      const st = P.pz.steps[j] || {};
+      const pre = st.kind !== 'hypo' && typeof st.text === 'string' ? st.text.split('→')[0].trim() : '';
+      const why = /。$/.test(pre) ? pre : t.steps[j] || '';
+      let how = '';
+      if (P.ep === 1) {
+        const f = (st.facts || []).find((x) => x.kind === 'status' && P.marks[x.person] && P.marks[x.person] !== x.value);
+        how = f ? '［' + (f.value === 'H' ? '正直者' : '嘘つき') + '］を押せば付け替えられます。' : '［犯人］は、ほかの人のカードで押せば付け替えられます。';
+      }
+      return { kind: '見直し', text: (evt === 'wrong' ? '食い違いがありました。' : '') + r.text + why + how, tone: 'warn', focus: r.focus };
+    }
+    return { kind: '案内', text: t.steps[j] || r.text, tone: '', focus: r.focus };
+  }
+  function renderGuide(evt) {
+    const el = $('#tutGuide'); if (!el || !P || P.mode !== 'tutorial') return;
+    const g = tutGuide(evt);
+    el.className = 'guide' + (g.tone ? ' ' + g.tone : '');
+    $('#gdKind').textContent = g.kind;
+    $('#gdText').innerHTML = nameLinks(P.pz, g.text);
+    if (evt !== 'start' && !reduceMotion()) { el.classList.remove('upd'); void el.offsetWidth; el.classList.add('upd'); }
+    // 押したあとは、次に見るカードを光らせる（画面は動かさない）
+    if (evt === 'mark' && g.focus && g.focus.length) focusCards(g.focus, false);
   }
 
   /* 下から出るパネル（ヒント・食い違い）。カードはそのまま触れる */
@@ -3482,7 +3903,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const key = r.kind === 'review' ? 'r|' + r.text : level + '|' + tgt;
     const seenKey = (k) => P.hintSeen.indexOf(k) >= 0;
     const isNew = r.kind === 'review' ? !seenKey(key) : level === 2 ? !seenKey(key) : !seenKey(key) && !seenKey('2|' + tgt);
-    if (!done && isNew) { P.hintSeen.push(key); P.hints++; }
+    const free = P.mode === 'tutorial';   // はじめての事件では、ヒントは数えない
+    if (!done && isNew && !free) { P.hintSeen.push(key); P.hints++; }
     saveProgress();
     sfx('hint');
     const fix = r.kind === 'review' || /見直してみよう/.test(r.text);
@@ -3501,7 +3923,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       title: level === 2 ? '次の一手' : fix ? '見直しのヒント' : 'ヒント',
       icon: 'i-bulb', tall: hasHypo && !done && !fix,
       body: (level === 2 ? body2 : '<p>' + richText(P.pz, r.text) + '</p>') +
-        '<p class="sub">使ったヒント ' + P.hints + '回</p>',
+        (free ? '' : '<p class="sub">使ったヒント ' + P.hints + '回</p>'),
       actions: (level === 1 && !done && !fix ? '<button class="btn" type="button" data-sheet="hint2">' + icon('i-search') + 'もっと詳しく（次の一手）</button>' : '') +
         '<button class="btn btn-ghost" type="button" data-sheet="close">閉じる</button>',
     });
@@ -3519,13 +3941,17 @@ if (typeof module !== 'undefined') module.exports = Engine;
     try { r = Engine.check(P.pz, { status: P.marks.slice(), culprit: P.culprit }); } catch (e) { r = { ok: false, contradiction: null }; }
     if (r.ok) return onSolved();
     if (r.incomplete) { updateSubmit(); return; }
+    const tut = P.mode === 'tutorial';   // はじめての事件では、ミスを数えない（同じ答えの出し直しだけ止める）
     timerStop();
-    P.mistakes++; P.attempts += '□'; P.lastWrong = answerKey();
+    if (!tut) { P.mistakes++; P.attempts += '□'; }
+    P.lastWrong = answerKey();
     timerStart();
     saveProgress();
     updateSubmit();
-    const mb = $('#tbMissBox');
-    $('#tbMiss').textContent = P.mistakes; mb.classList.add('hit'); mb.classList.remove('bump'); void mb.offsetWidth; mb.classList.add('bump');
+    if (!tut) {
+      const mb = $('#tbMissBox');
+      $('#tbMiss').textContent = P.mistakes; mb.classList.add('hit'); mb.classList.remove('bump'); void mb.offsetWidth; mb.classList.add('bump');
+    }
     sfx('wrong'); buzz('wrong');
     clearContra();
     const c = r.contradiction;
@@ -3539,9 +3965,10 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const msg = c && c.message ? richText(P.pz, c.message) : r.message ? richText(P.pz, r.message) : 'どこかに食い違いがあります。判定を見直してみよう。';
     openSheet({
       title: '食い違いがあります', icon: 'i-x', warn: true,
-      body: '<p>' + msg + '</p><p class="sub">ミス ' + P.mistakes + '回。判定を直してから、もう一度提出しよう。</p>',
+      body: '<p>' + msg + '</p><p class="sub">' + (tut ? '' : 'ミス ' + P.mistakes + '回。') + '判定を直してから、もう一度提出しよう。</p>',
       actions: '<button class="btn" type="button" data-sheet="close">閉じて見直す</button>',
     });
+    if (tut) renderGuide('wrong');
     if (target) setTimeout(() => scrollToEl(target), 60);
   }
 
@@ -3571,6 +3998,24 @@ if (typeof module !== 'undefined') module.exports = Engine;
       });
       saveProgress();
       syncNotifications();   // 今日を解いたら、夜の「まだ解いていません」を取り消す
+    } else if (P.mode === 'weekly') {
+      // 今週の難問: その週の記録を「解決」に。連続日数・解決数・ノーミス数には数えない（解いた週の数は記録から数える）
+      update((s) => {
+        if ((s.epoch || '') !== (P.epoch || '')) P.epoch = s.epoch || '';
+        const old = s.weekly[P.week];
+        if (old && old.state === 'solved') {          // 別のタブで先に解決していた: その記録を見せる
+          Object.assign(P, { mistakes: old.mistakes, hints: old.hints, attempts: old.attempts || '■', elapsed: old.elapsed });
+          return;
+        }
+        s.weekly[P.week] = Object.assign({ state: 'solved' }, playRec(P.elapsed), { title: P.pz.story.title });
+      });
+    } else if (P.mode === 'tutorial') {
+      // はじめての事件: 進み具合だけ。記録（連続・解決数・練習の解決数）には数えない
+      update((s) => {
+        if ((s.epoch || '') !== (P.epoch || '')) P.epoch = s.epoch || '';
+        s.tutorial.done = Math.max(s.tutorial.done, P.ep);
+        if (!s.tutorial.cur || s.tutorial.cur.ep === P.ep) s.tutorial.cur = null;
+      });
     } else {
       update((s) => {
         if ((s.epoch || '') !== (P.epoch || '')) P.epoch = s.epoch || '';
@@ -3580,6 +4025,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     closeSheet(); clearContra();
     for (let i = 0; i < P.pz.people; i++) updateCard(i);
     renderBar();
+    if (P.mode === 'tutorial') renderGuide('solved');
     const head = $('.case-head');
     if (head && !$('#chSeal')) head.insertAdjacentHTML('beforeend', '<div class="ch-seal anim" id="chSeal">' + solvedSealSVG() + '</div>');
     showResult(true);
@@ -3595,8 +4041,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
   const SITE_URL = 'https://kiyotake1229.github.io/usotsuki-mura/';
   function copyText() {
     const pz = P.pz;
-    const kind = P.mode === 'daily' ? 'No.' + pz.no : P.hard ? '難問' : '練習';
-    const head = '嘘つき村の事件簿 ' + kind + '（' + starsText(pz.star) + '・' + pz.people + '人）';
+    const head = '嘘つき村の事件簿 ' + caseLabel() + '（' + starsText(pz.star) + '・' + pz.people + '人）';
     const lines = [head, P.attempts + ' ' + P.attempts.length + '回目で解決', 'ミス' + P.mistakes + '・ヒント' + P.hints + '・' + fmtTime(P.elapsed)];
     if (P.mode === 'daily' && P.solvedOnDay && P.streakAtSolve != null) lines.push('連続' + P.streakAtSolve + '日');
     lines.push(SITE_URL);
@@ -3605,9 +4050,15 @@ if (typeof module !== 'undefined') module.exports = Engine;
   // 結果の判子の周りの文字（結果の画面と共有画像で同じ）
   function ringLabel() {
     const pz = P.pz;
-    return P.mode === 'daily'
-      ? '嘘つき村 駐在所 ・ 事件簿 No.' + pz.no + ' ・ ' + P.date.replace(/-/g, '.') + ' ・ '
-      : '嘘つき村 駐在所 ・ ' + (P.hard ? '難問' : '練習') + ' ' + starsText(pz.star) + ' ・ 容疑者' + pz.people + '人 ・ ';
+    if (P.mode === 'daily') return '嘘つき村 駐在所 ・ 事件簿 No.' + pz.no + ' ・ ' + P.date.replace(/-/g, '.') + ' ・ ';
+    if (P.mode === 'weekly') return '嘘つき村 駐在所 ・ ' + weekName(P.week, today()) + ' 第' + P.weekNo + '週 ・ 容疑者' + pz.people + '人 ・ ';
+    if (P.mode === 'tutorial') return '嘘つき村 駐在所 ・ はじめての事件 ・ 第' + P.ep + '話 ・ ';
+    return '嘘つき村 駐在所 ・ ' + (P.hard ? '難問' : '練習') + ' ' + starsText(pz.star) + ' ・ 容疑者' + pz.people + '人 ・ ';
+  }
+  // 「10月12日〜10月18日」（共有画像の事件の行）
+  function weekRangeLong(monday) {
+    const a = parseD(monday), b = parseD(Engine.addDays(monday, 6));
+    return a.m + '月' + a.d + '日〜' + b.m + '月' + b.d + '日';
   }
   function showResult(animate) {
     if (!P) return;
@@ -3620,14 +4071,17 @@ if (typeof module !== 'undefined') module.exports = Engine;
       streak = !P.solvedOnDay ? '<p class="res-streak">' + (P.openedOnDay ? '翌朝3時を過ぎてから解いた事件は、連続日数に数えません' : '当日以外に解いた事件は、連続日数に数えません') + '</p>'
         : P.streakAtSolve != null ? '<p class="res-streak">' + icon('i-lamp') + '連続 <b>' + P.streakAtSolve + '</b> 日</p>'
           : '<p class="res-streak">' + icon('i-lamp') + 'その日のうちに解決</p>';
-    } else streak = '<p class="res-streak">練習で解いた事件 <b>' + (S.practice.solved || 0) + '</b> 件</p>';
+    } else if (P.mode === 'weekly') streak = '<p class="res-streak">今週の難問を解いた週 <b>' + weeksSolved(S) + '</b> 週</p>';
+    else streak = '<p class="res-streak">練習で解いた事件 <b>' + (S.practice.solved || 0) + '</b> 件</p>';
     const splat = [[-96, -40, 9], [92, -58, 7], [-74, 70, 6], [104, 44, 10], [12, -104, 6], [-20, 102, 8], [70, 92, 5], [-110, 8, 5]]
       .map((p) => '<i style="--x:' + p[0] + 'px;--y:' + p[1] + 'px;--s:' + p[2] + 'px"></i>').join('');
     const el = $('#result');
+    const tut = P.mode === 'tutorial';
     el.innerHTML = '<div class="res-inner' + (anim ? ' anim' : '') + '" role="dialog" aria-modal="true" aria-labelledby="resTitle">' +
       '<div class="res-seal' + (anim ? ' anim' : '') + '">' + bigSealSVG(ring) + '<span class="splat">' + splat + '</span></div>' +
       '<div class="res-paper">' +
       '<p class="res-case">' + esc(caseLabel()) + '・' + esc(pz.story.title) + '</p>' +
+      (tut ? tutResultHTML() :
       '<h2 class="res-title" id="resTitle" tabindex="-1"><small>称号</small>' + esc(rankTitle()) + '</h2>' +
       '<dl class="res-stats"><div><dt>時間</dt><dd>' + fmtTime(P.elapsed) + '</dd></div><div><dt>ミス</dt><dd>' + P.mistakes + '</dd></div><div><dt>ヒント</dt><dd>' + P.hints + '</dd></div></dl>' +
       '<div class="res-tries">' + triesHTML(P.attempts, 8) + '<span>' + P.attempts.length + '回目で解決</span></div>' + streak +
@@ -3640,7 +4094,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
           '<button class="btn btn-ghost full" type="button" data-res="close">盤面を見る</button>'
         : '<button class="btn" type="button" data-res="home">' + icon('i-home') + 'ホームへ</button><button class="btn btn-ghost" type="button" data-res="close">盤面を見る</button>') +
       '</div>' +
-      '<div class="copy-fb" id="copyFb" hidden><p>コピーできませんでした。下の文を長押しして選んでください。</p><textarea id="copyText" rows="5" readonly></textarea></div>' +
+      '<div class="copy-fb" id="copyFb" hidden><p>コピーできませんでした。下の文を長押しして選んでください。</p><textarea id="copyText" rows="5" readonly></textarea></div>') +
       '</div></div>';
     el.hidden = false;
     el.scrollTop = 0;
@@ -3653,8 +4107,24 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (anim) {
       setTimeout(() => { sfx('solve'); buzz('solve'); const v = $('#playBody'); v.classList.remove('thump'); void v.offsetWidth; v.classList.add('thump'); }, 360);
     } else if (animate) { sfx('solve'); buzz('solve'); }
-    // 共有画像は先に作っておく（押したらすぐ共有の画面を出せるように。判子の演出が終わってから）
-    setTimeout(() => { if (!$('#result').hidden) prepareShare().catch(() => {}); }, anim ? 1100 : 250);
+    // 共有画像は先に作っておく（押したらすぐ共有の画面を出せるように。判子の演出が終わってから）。はじめての事件は共有しない
+    if (!tut) setTimeout(() => { if (!$('#result').hidden && P && P.mode !== 'tutorial') prepareShare().catch(() => {}); }, anim ? 1100 : 250);
+  }
+  // はじめての事件の結果: 称号・共有は出さず、「第N話 解決」と次の話へ。3話目のあとは締めと今日の事件へ
+  function tutResultHTML() {
+    const last = P.ep >= TUTORIAL.length;
+    return '<h2 class="res-title' + (last ? ' sm' : '') + '" id="resTitle" tabindex="-1"><small>' + (last ? 'はじめての事件 第' + P.ep + '話 解決' : 'はじめての事件') + '</small>' +
+      (last ? 'これで準備は完了です' : '第' + P.ep + '話 解決') + '</h2>' +
+      '<div class="res-msg"><p>' + esc(P.tut.solved) + '</p>' +
+      (last ? '<p>毎朝1件、新しい事件が届きます。月・火は★1、水〜金は★2、土・日は★3。困ったらヒントを使ってください。</p>' : '') + '</div>' +
+      tutStepsHTML() +
+      '<div class="res-actions">' +
+      (last
+        ? '<button class="btn btn-pri full" type="button" data-res="today">' + icon('i-search') + '今日の事件を開く</button>' +
+          '<button class="btn" type="button" data-res="explain">' + icon('i-book') + '解説を見る</button><button class="btn" type="button" data-res="home">' + icon('i-home') + 'ホームへ</button>'
+        : '<button class="btn btn-pri full" type="button" data-res="next">' + nextLabel() + icon('i-next') + '</button>' +
+          '<button class="btn" type="button" data-res="explain">' + icon('i-book') + '解説を見る</button><button class="btn btn-ghost" type="button" data-res="close">盤面を見る</button>') +
+      '</div>';
   }
   let resLockUntil = 0;
   function hideResult() {
@@ -3692,20 +4162,22 @@ if (typeof module !== 'undefined') module.exports = Engine;
     'M330 131 C336 122 344 118 352 116 L370 116 C380 118 392 123 400 126 V131Z', 'M353 117 L356 92 L364 92 L367 117Z'];
   let shareCache = null;   // { p: 事件, key, promise, img: { dataURL, blob, file, name } }
   function shareInfo() {
-    const pz = P.pz, daily = P.mode === 'daily';
+    const pz = P.pz, daily = P.mode === 'daily', weekly = P.mode === 'weekly';
     let caseLine;
     if (daily) { const d = parseD(P.date); caseLine = '事件簿 No.' + pz.no + '　' + d.y + '年' + d.m + '月' + d.d + '日（' + WD[d.wd] + '）'; }
+    else if (weekly) caseLine = weekName(P.week, today()) + ' 第' + P.weekNo + '週　' + weekRangeLong(P.week);
     else caseLine = P.hard ? '難問（練習）' : '練習の事件';
     let streak;
     if (daily) {
       streak = !P.solvedOnDay ? { lamp: false, text: '当日以外に解いた事件' }
         : P.streakAtSolve != null ? { lamp: true, pre: '連続', n: P.streakAtSolve, post: '日' } : { lamp: true, text: 'その日のうちに解決' };
-    } else streak = { lamp: false, pre: '練習で解いた事件', n: S.practice.solved || 0, post: '件' };
+    } else if (weekly) streak = { lamp: false, pre: '今週の難問を解いた週', n: weeksSolved(S), post: '週' };
+    else streak = { lamp: false, pre: '練習で解いた事件', n: S.practice.solved || 0, post: '件' };
     return {
       caseLine, title: pz.story.title, star: pz.star, people: pz.people, rank: rankTitle(),
       time: fmtTime(P.elapsed), mistakes: String(P.mistakes), hints: String(P.hints), attempts: P.attempts || '■',
       streak, ring: ringLabel(),
-      name: daily ? 'usotsuki-no' + pz.no + '.png' : P.hard ? 'usotsuki-nanmon.png' : 'usotsuki-renshu.png',
+      name: daily ? 'usotsuki-no' + pz.no + '.png' : weekly ? 'usotsuki-week' + P.weekNo + '.png' : P.hard ? 'usotsuki-nanmon.png' : 'usotsuki-renshu.png',
       alt: '嘘つき村の事件簿 ' + caseLabel() + '「' + pz.story.title + '」解決。称号「' + rankTitle() + '」、時間 ' + fmtTime(P.elapsed) + '、ミス ' + P.mistakes + '、ヒント ' + P.hints + '。',
     };
   }
@@ -3713,7 +4185,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
   const shareFresh = (img) => !!img && !(img.partial && shareFontsReady(img.fontText));
   function prepareShare() {
     if (!P || P.state !== 'solved') return Promise.reject(new Error('not solved'));
-    const key = [P.attempts, P.mistakes, P.hints, Math.round(P.elapsed), P.streakAtSolve, S.practice.solved].join('|');
+    const key = [P.attempts, P.mistakes, P.hints, Math.round(P.elapsed), P.streakAtSolve, S.practice.solved, weeksSolved(S)].join('|');
     if (shareCache && shareCache.p === P && shareCache.key === key && (!shareCache.img || shareFresh(shareCache.img))) return shareCache.promise;
     const c = { p: P, key, img: null };
     c.promise = drawShareImage(shareInfo()).then((img) => { c.img = img; return img; });
@@ -4044,6 +4516,13 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const people = choices[Math.floor(Math.random() * choices.length)];
     openCase({ mode: 'practice', slot: star, seed: practiceSeed(), star, people, from: 'home', avoid: lastPracticeTitle });
   }
+  // はじめての事件の第 ep 話を開く。fresh: 最初から（途中の判子を捨てる）。途中がその話のものなら続きから
+  function openTutorial(ep, fresh) {
+    ep = Math.min(TUTORIAL.length, Math.max(1, ep | 0));
+    if (fresh) update((s) => { s.tutorial.cur = null; });
+    const c = S.tutorial.cur;
+    openCase({ mode: 'tutorial', ep, resume: c && c.ep === ep ? c : null, star: TUTORIAL[ep - 1].star || 2, from: cur === 'howto' ? 'howto' : 'home' });
+  }
   // 練習の途中は★ごと（と難問）に1件ずつ残す。別の★を開いても前の途中は消えない
   function openPractice(slot) {
     slot = slotKey(slot);
@@ -4088,47 +4567,110 @@ if (typeof module !== 'undefined') module.exports = Engine;
       '<div class="ex-foot">' +
       '<button class="btn" type="button" data-ex="back">' + icon('i-back') + '事件に戻る</button>' +
       '<button class="btn" type="button" data-ex="home">' + icon('i-home') + 'ホームへ</button>' +
-      (P.mode === 'practice' ? '<button class="btn btn-pri full" type="button" data-ex="next">次の事件' + icon('i-next') + '</button>' : '') +
+      (P.mode === 'practice' || (P.mode === 'tutorial' && P.state === 'solved') ? '<button class="btn btn-pri full" type="button" data-ex="next">' + nextLabel() + icon('i-next') + '</button>' : '') +
       '</div>';
   }
 
   /* ---------- 事件簿 ---------- */
+  // 毎日の事件は No.1 から今日まで、今週の難問は第1週から今週まで。全部を一度に描くと日数が増えたときに固まるので、
+  // 最初は BOOK_FIRST 行だけ出し、「もっと見る」で BOOK_MORE 行ずつ足す（描き直すときも、出している行数は保つ）
+  const BOOK_FIRST = 30, BOOK_MORE = 60;
+  const book = { tab: 'days', shown: { days: BOOK_FIRST, weeks: BOOK_FIRST } };
+  const bookList = (kind) => (kind === 'weeks' ? bookWeeks(today()) : bookDays(today()));
+  function ledgerEnd(rec) {
+    if (rec && rec.state === 'solved') return '<span class="mini-seal">' + solvedSealSVG(30) + '</span>' + triesHTML(rec.attempts, 5) + '<span>' + fmtTime(rec.elapsed) + '・ミス' + (rec.mistakes || 0) + '</span>';
+    if (rec && rec.state === 'playing') return '<span class="chip go">途中</span><span>' + fmtTime(rec.elapsed) + '</span>';
+    return '<span class="chip">未解決</span>';
+  }
+  function dayRowHTML(d, t) {
+    const cfg = Engine.dailyConfig(d);   // エンジンが割り当てを覚えているので、2回目からは軽い
+    const title = cfg.title || titleCache[d] || '';
+    return '<li><button type="button" data-date="' + d + '"><span class="lg-no"><small>No.</small>' + cfg.no + '</span>' +
+      '<span class="lg-mid"><span class="lg-date">' + esc(dateLabel(d)) + starsHTML(cfg.star) + '<span>' + cfg.people + '人</span>' + (d === t ? '<span class="lg-today">今日</span>' : '') + '</span>' +
+      '<span class="lg-title" data-title="' + d + '">' + esc(title || '（題名なし）') + '</span></span>' +
+      '<span class="lg-end">' + ledgerEnd(liveRec(S.daily[d])) + '</span></button></li>';
+  }
+  function weekRowHTML(m, thisMon) {
+    const rec = liveRec(S.weekly[m]);
+    const title = rec && rec.title;   // 題名は開いたことのある週だけ（作るまで分からない）
+    return '<li><button type="button" data-week="' + m + '"><span class="lg-no lg-wk"><small>第</small>' + weekNoOf(m) + '<small>週</small></span>' +
+      '<span class="lg-mid"><span class="lg-date"><span>' + weekRange(m) + '</span>' + starsHTML(3) + '<span>9人</span>' + (m === thisMon ? '<span class="lg-today">今週</span>' : '') + '</span>' +
+      '<span class="lg-title' + (title ? '' : ' wait') + '">' + esc(title || '容疑者9人の大事件') + '</span></span>' +
+      '<span class="lg-end">' + ledgerEnd(rec) + '</span></button></li>';
+  }
+  // from〜to-1 番目の行（月・年の見出しつき）
+  function bookItemsHTML(kind, list, from, to) {
+    const t = today(), thisMon = mondayOf(t);
+    return bookRows(list, from, to, kind === 'weeks' ? yearOf : monthOf).map((r) => {
+      if (r.head) { const p = r.head.split('-'); return '<li class="lg-head"><h3>' + p[0] + '年' + (p[1] ? +p[1] + '月' : '') + '</h3></li>'; }
+      return kind === 'weeks' ? weekRowHTML(r.item, thisMon) : dayRowHTML(r.item, t);
+    }).join('');
+  }
+  function bookMoreHTML(kind, total, shown) {
+    const left = total - shown;
+    if (left <= 0) return '';
+    return '<button class="btn btn-wide lg-more" type="button" data-more="' + kind + '">' + icon('i-down') +
+      'もっと見る（あと ' + left + (kind === 'weeks' ? '週' : '日') + '）</button>';
+  }
   function renderBook() {
-    const t = today(), st = S.stats;
-    let h = '<div class="tally">' +
+    const st = S.stats, tab = book.tab;
+    const days = bookList('days'), weeks = bookList('weeks'), list = tab === 'weeks' ? weeks : days;
+    const shown = Math.min(Math.max(book.shown[tab], BOOK_FIRST), list.length);
+    const tabBtn = (k, label, n) => '<button type="button" role="tab" id="bt-' + k + '" aria-label="' + label + '（' + n + '）" aria-selected="' + (tab === k) + '" aria-controls="bookPanel" tabindex="' + (tab === k ? 0 : -1) + '" data-booktab="' + k + '">' +
+      '<span>' + label + '</span><small class="tnum">' + n + '</small></button>';
+    $('#bookBody').innerHTML = '<div class="tally">' +
       '<div><b>' + (st.totalSolved || 0) + '</b><span>解決</span></div>' +
       '<div><b>' + streakNow() + '</b><span>連続</span></div>' +
       '<div><b>' + (st.bestStreak || 0) + '</b><span>最高連続</span></div>' +
       '<div><b>' + (st.perfect || 0) + '</b><span>ノーミス</span></div></div>' +
-      '<p class="tally-note">練習で解いた事件 ' + (S.practice.solved || 0) + '件。過去の日の事件も遊べます（連続日数には数えません。ただし、その日のうちに開いた事件は、翌朝3時までに解けば数えます）。</p>' +
+      '<p class="tally-note">練習で解いた事件 ' + (S.practice.solved || 0) + '件・今週の難問を解いた週 ' + weeksSolved(S) + '週</p>' +
       (clockBehind(rawToday()) ? '<div class="home-note">' + clockNoteHTML() + '</div>' : '') +
-      '<ul class="ledger">';
-    for (let i = 0; i < 14; i++) {
-      const d = Engine.addDays(t, -i);
-      const cfg = Engine.dailyConfig(d);
-      if (!(cfg.no >= 1)) break;
-      const rec = liveRec(S.daily[d]);
-      const title = cfg.title || titleCache[d] || '';
-      let end;
-      if (rec && rec.state === 'solved') end = '<span class="mini-seal">' + solvedSealSVG(30) + '</span>' + triesHTML(rec.attempts, 5) + '<span>' + fmtTime(rec.elapsed) + '・ミス' + (rec.mistakes || 0) + '</span>';
-      else if (rec && rec.state === 'playing') end = '<span class="chip go">途中</span><span>' + fmtTime(rec.elapsed) + '</span>';
-      else end = '<span class="chip">未解決</span>';
-      h += '<li><button type="button" data-date="' + d + '"><span class="lg-no"><small>No.</small>' + cfg.no + '</span>' +
-        '<span class="lg-mid"><span class="lg-date">' + esc(dateLabel(d)) + starsHTML(cfg.star) + '<span>' + cfg.people + '人</span>' + (i === 0 ? '<span class="lg-today">今日</span>' : '') + '</span>' +
-        '<span class="lg-title" data-title="' + d + '">' + esc(title || '（題名なし）') + '</span></span>' +
-        '<span class="lg-end">' + end + '</span></button></li>';
-    }
-    h += '</ul>';
-    $('#bookBody').innerHTML = h;
+      '<div class="booktabs" role="tablist" aria-label="事件簿の種類">' + tabBtn('days', '毎日の事件', days.length + '日') + tabBtn('weeks', '今週の難問', weeks.length + '週') + '</div>' +
+      '<div class="book-panel" id="bookPanel" role="tabpanel" aria-labelledby="bt-' + tab + '">' +
+      '<p class="book-note">' + (tab === 'weeks'
+        ? '月曜ごとに、容疑者9人の事件が1つ届きます（全員が同じ事件）。過去の週も遊べます。毎日の連続日数には数えません。'
+        : '過去の日の事件も遊べます（連続日数には数えません。ただし、その日のうちに開いた事件は、翌朝3時までに解けば数えます）。') + '</p>' +
+      '<ul class="ledger" id="ledger">' + bookItemsHTML(tab, list, 0, shown) + '</ul>' +
+      '<div id="bookMore">' + bookMoreHTML(tab, list.length, shown) + '</div></div>';
+  }
+  // 「もっと見る」: 続きの行を足す（描き直さない）。足した最初の行に焦点を移す
+  function bookMore(kind) {
+    const list = bookList(kind), from = Math.min(book.shown[kind], list.length), to = Math.min(list.length, from + BOOK_MORE);
+    const ul = $('#ledger'); if (!ul || from >= to) return;
+    ul.insertAdjacentHTML('beforeend', bookItemsHTML(kind, list, from, to));
+    book.shown[kind] = to;
+    $('#bookMore').innerHTML = bookMoreHTML(kind, list.length, to);
+    const first = ul.querySelector('[data-' + (kind === 'weeks' ? 'week' : 'date') + '="' + list[from] + '"]');
+    if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
+  }
+  function setBookTab(k, focus) {
+    if (k !== 'days' && k !== 'weeks') return;
+    book.tab = k;
+    renderBook();
+    if (focus) { const b = $('#bt-' + k); if (b) b.focus(); }
   }
 
   /* ---------- 遊び方 ---------- */
+  // 本文は1回だけ作る。はじめての事件のボタン（進み具合で変わる）だけ、開くたびに作り直す
   let howtoDone = false;
   function renderHowto() {
-    if (howtoDone) return;
+    if (!howtoDone) renderHowtoBody();
+    renderHowtoTut();
+  }
+  function renderHowtoTut() {
+    const box = $('#howtoTut'); if (!box) return;
+    const nx = tutNext();
+    let btns;
+    if (!tutStarted()) btns = '<button class="btn btn-pri btn-wide" type="button" data-tut="start">' + icon('i-search') + 'はじめての事件で練習する</button>';
+    else if (nx) btns = '<div class="ht-row"><button class="btn btn-pri" type="button" data-tut="go" aria-label="第' + nx + '話から続ける">' + icon('i-search') + '第' + nx + '話から</button><button class="btn" type="button" data-tut="start">最初から</button></div>';
+    else btns = '<button class="btn btn-pri btn-wide" type="button" data-tut="start">' + icon('i-search') + 'もう一度練習する</button>';
+    box.innerHTML = '<p class="ht-k">はじめての事件</p><p class="ht-d">3問・約5分。判子の押し方から、仮定の置き方まで。記録には数えません。</p>' + tutStepsHTML() + btns;
+  }
+  function renderHowtoBody() {
     let ex = null;
     try { ex = Engine.example(); } catch (e) { ex = null; }
     let h = '<p class="page-lead">村には、本当のことしか言わない<b>正直者</b>と、ウソしか言わない<b>嘘つき</b>がいます。証言から全員を見分けて、犯人を1人当てましょう。</p>' +
+      '<section class="ht-tut" id="howtoTut" aria-label="はじめての事件"></section>' +
       '<h2>きまり</h2><ul class="rulelist">' +
       '<li><span class="n">一</span><span>村人はみんな、正直者か嘘つきのどちらか。正直者の証言は本当、嘘つきの証言はウソです。</span></li>' +
       '<li><span class="n">二</span><span>犯人はちょうど1人。犯人が正直者のこともあります。</span></li>' +
@@ -4147,6 +4689,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
           return '<div class="ex-card" style="--pc:var(--p' + v.color + ')"><div class="vc-av">' + avatarSVG(v.avatar, v.color) + '</div><p><span class="who">' + esc(v.name) + '</span>「' + richText(ex, s.text) + '」</p></div>';
         }).join('') + '</div>' +
         '<p>どこから考えてもかまいません。まずは誰か1人を「もし嘘つきだとしたら」と仮に決めて、食い違いが出ないか確かめるのが近道です。</p>' +
+        // はじめての事件の第3話は、この例題と同じ問題。答えを見る前に気づけるように、ボタンのすぐ上に書く
+        '<p class="ex-note">' + icon('i-bulb') + '<span>はじめての事件の第3話と同じ問題です。先に自分で解きたいときは、答えを開かずに第3話へ。</span></p>' +
         '<button class="btn reveal" type="button" id="exReveal" aria-expanded="false">' + icon('i-down') + '考え方と答えを見る</button>' +
         '<div id="exSteps" hidden>' + stepsHTML(ex, ex.steps) + answerHTML(ex) + '</div>';
     }
@@ -4155,7 +4699,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
       [['月', 1, 4], ['火', 1, 5], ['水', 2, 4], ['木', 2, 5], ['金', 2, 6], ['土', 3, 5], ['日', 3, 6]]
         .map((r) => '<tr><td>' + r[0] + '</td><td>' + starsHTML(r[1]) + '</td><td>' + r[2] + '人</td></tr>').join('') +
       '</tbody></table><p>その日のうちに解くと「連続日数」がのびます。夜に開いた事件は、0時を過ぎても翌朝3時までに解けば、開いた日の分として数えます。</p>' +
-      '<h2>練習と難問</h2><p>練習では、★1〜★3 の事件を何問でも解けます（日替わりの記録とは別）。「難問」は容疑者9人・★3 の大事件です。仮定を何度か重ねて、腰を据えて解きましょう。人数が多いので、上の名簿を押すとその人のカードへ移動できます。</p>' +
+      '<h2>今週の難問</h2><p>月曜ごとに、容疑者9人・★3 の大事件が1つ届きます。全員が同じ事件です。毎日の連続日数には数えず、解いた週の数を記録します。過去の週も「事件簿」から遊べます。</p>' +
+      '<h2>練習と難問</h2><p>練習では、★1〜★3 の事件を何問でも解けます（日替わりの記録とは別）。「難問」は容疑者9人・★3 の大事件で、開くたびにちがう事件が出ます（今週の難問とは別）。仮定を何度か重ねて、腰を据えて解きましょう。人数が多いので、上の名簿を押すとその人のカードへ移動できます。</p>' +
       '<div style="margin-top:22px"><button class="btn btn-pri btn-wide" type="button" data-practice="1">' + icon('i-search') + '練習（★1）で試す</button></div>';
     $('#howtoBody').innerHTML = h;
     howtoDone = true;
@@ -4184,7 +4729,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       '</ul>' +
       '<div class="danger-zone">' +
       (confirmOpen
-        ? '<div class="confirm" role="alertdialog" aria-labelledby="cfmText"><p id="cfmText">日替わりの記録・練習の途中・連続日数をすべて消します。元には戻せません。</p><div class="row"><button class="btn btn-danger" type="button" data-reset="yes">' + icon('i-trash') + '消す</button><button class="btn" type="button" data-reset="no">やめる</button></div></div>'
+        ? '<div class="confirm" role="alertdialog" aria-labelledby="cfmText"><p id="cfmText">日替わりと今週の難問の記録・練習の途中・連続日数・はじめての事件の進み具合をすべて消します。元には戻せません。</p><div class="row"><button class="btn btn-danger" type="button" data-reset="yes">' + icon('i-trash') + '消す</button><button class="btn" type="button" data-reset="no">やめる</button></div></div>'
         : '<button class="btn" type="button" data-reset="ask">' + icon('i-trash') + '記録を消す</button>') +
       '</div>' +
       '<p class="about">記録や操作の内容を外部に送ることはありません（外から読むのは文字の書体だけで、Google Fonts から読み込みます）。記録はこの端末の' + (NATIVE ? 'アプリの中' : 'ブラウザの中（localStorage）') + 'だけに保存されます。<br>問題はすべてその場で自動で作られ、答えが1つに決まることを確かめています。<br>' +
@@ -4205,6 +4750,24 @@ if (typeof module !== 'undefined') module.exports = Engine;
     const pr = t.closest('[data-practice]');
     if (pr) { openPractice(pr.dataset.practice); return; }
     if (t.closest('#tOpen')) { openCase({ mode: 'daily', date: today(), from: 'home' }); return; }
+    const wk = t.closest('[data-week]');
+    if (wk) { openCase({ mode: 'weekly', week: wk.dataset.week, from: cur === 'book' ? 'book' : 'home' }); return; }
+    const tu = t.closest('[data-tut]');
+    if (tu) {
+      const a = tu.dataset.tut;
+      if (a === 'dismiss') {
+        update((s) => { s.tutorial.dismissed = true; });
+        renderTutCard();
+        toast('遊び方の画面から、いつでも練習できます');
+        const f = $('#tOpen'); if (f) { try { f.focus({ preventScroll: true }); } catch (er) { f.focus(); } }
+      } else if (a === 'start') openTutorial(1, true);
+      else openTutorial(tutNext() || 1);
+      return;
+    }
+    const bt = t.closest('[data-booktab]');
+    if (bt) { setBookTab(bt.dataset.booktab, true); return; }
+    const more = t.closest('[data-more]');
+    if (more) { bookMore(more.dataset.more); return; }
     const pdb = t.closest('[data-pending]');
     if (pdb) { openCase({ mode: 'daily', date: pdb.dataset.pending, from: 'home' }); return; }
     const lg = t.closest('[data-date]');
@@ -4229,7 +4792,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       if (t.closest('#btnSubmit')) { submit(); return; }
       if (t.closest('#btnExplain')) { renderExplain(); go('explain'); return; }
       if (t.closest('#btnResult')) { showResult(false); return; }
-      if (t.closest('#btnNext')) { newPractice(P.slot); return; }
+      if (t.closest('#btnNext')) { nextCase(); return; }
     }
     if (t.closest('#playBack')) { loadToken++; goBack(); return; }
     const ex = t.closest('[data-ex]');
@@ -4237,7 +4800,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       const a = ex.dataset.ex;
       if (a === 'back') goBack();
       else if (a === 'home') go('home');
-      else if (a === 'next' && P) newPractice(P.slot);
+      else if (a === 'next' && P) nextCase();
       return;
     }
     const sh = t.closest('[data-sheet]');
@@ -4250,7 +4813,8 @@ if (typeof module !== 'undefined') module.exports = Engine;
       if (a === 'share') { shareResult(res); return; }
       hideResult();
       if (a === 'explain') { renderExplain(); go('explain'); }
-      else if (a === 'next') newPractice(P.slot);
+      else if (a === 'next') nextCase();
+      else if (a === 'today') openCase({ mode: 'daily', date: today(), from: 'home' });
       else if (a === 'home') go('home');
       else { const f = $('#btnResult'); if (f) f.focus({ preventScroll: true }); }
       return;
@@ -4309,6 +4873,9 @@ if (typeof module !== 'undefined') module.exports = Engine;
     }
   });
   document.addEventListener('keydown', (e) => {
+    // 事件簿のタブは左右の矢印でも切り替える
+    const bt = e.target && e.target.closest && e.target.closest('[data-booktab]');
+    if (bt && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { e.preventDefault(); setBookTab(bt.dataset.booktab === 'days' ? 'weeks' : 'days', true); return; }
     if (e.key !== 'Escape') return;
     if (!$('#shareView').hidden) { closeShareView(); return; }
     if (!$('#result').hidden) { hideResult(); const f = $('#btnResult'); if (f) f.focus({ preventScroll: true }); return; }
@@ -4354,7 +4921,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     if (e.key !== KEY && e.key !== null) return;
     const fresh = readStore(); if (!fresh) return;
     const wiped = (fresh.epoch || '') !== (S.epoch || '');   // 別のタブで「記録を消す」をした
-    S = fresh;
+    S = wiped ? fresh : carryNew(fresh, S);
     applyTheme();
     if (wiped) {
       // 開いている事件は消す前のものなので閉じる（書き戻さない）。事件・解説の画面にいたらホームへ
@@ -4364,7 +4931,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
       if (cur === 'play' || cur === 'explain') go('home');
       toast('別の画面で記録が消されました');
     }
-    if (cur === 'home') renderHome(); else if (cur === 'book') renderBook(); else if (cur === 'settings') renderSettings();
+    if (cur === 'home') renderHome(); else if (cur === 'book') renderBook(); else if (cur === 'settings') renderSettings(); else if (cur === 'howto') renderHowtoTut();
   });
 
   /* ---------- 通知（iOS アプリの LocalNotifications。端末の中だけで予約する） ----------
@@ -4507,7 +5074,7 @@ if (typeof module !== 'undefined') module.exports = Engine;
     nativeRestore().then((changed) => {
       clearTimeout(t0);
       if (!booted) { boot(); return; }
-      if (changed) { applyTheme(); if (cur === 'home') renderHome(); else if (cur === 'book') renderBook(); else if (cur === 'settings') renderSettings(); syncNotifications(); }
+      if (changed) { applyTheme(); if (cur === 'home') renderHome(); else if (cur === 'book') renderBook(); else if (cur === 'settings') renderSettings(); else if (cur === 'howto') renderHowtoTut(); syncNotifications(); }
     }, () => { clearTimeout(t0); boot(); });
   } else boot();
 })();
