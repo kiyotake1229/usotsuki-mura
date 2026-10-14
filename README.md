@@ -8,7 +8,7 @@
 | 状態 | **Web版 公開中（GitHub Pages）/ PWA 対応済み / iOS プロジェクト構築済み・ビルド確認済み（GitHub Actions。引き渡し可）** |
 | 一般公開URL（GitHub Pages） | https://kiyotake1229.github.io/usotsuki-mura/ （2026-10-08 公開。リポジトリ https://github.com/kiyotake1229/usotsuki-mura 。`index.html` を push すると数十秒で反映） |
 | サポートURL（App Store 用） | https://kiyotake1229.github.io/usotsuki-mura/support.html （プライバシーポリシーは `#privacy`） |
-| 開発確認用（Claude Artifact） | https://claude.ai/artifact/BRWf8oJikTLt1mrkdA83Di （2026-10-09 に最新の版で公開し直した。#0016 まで反映。#0017〜#0019 はまだ載せていない） |
+| 開発確認用（Claude Artifact） | https://claude.ai/artifact/BRWf8oJikTLt1mrkdA83Di （2026-10-14 に最新の版で公開し直した。#0019 まで反映） |
 | 本体 | `index.html`（約340KB・5,100行。画面・推論エンジン・似顔絵の SVG まですべて1ファイル） |
 | 通信 | 記録や操作の内容は外に送らない。外から読むのは Google Fonts の文字だけ（表示を止めずに読む。読めなくても端末の文字で表示される） |
 | データ | 端末内のみ（localStorage のキー `usotsuki.v1`。iOS アプリは Preferences にも二重に保存） |
@@ -172,7 +172,8 @@ Claude がブラウザで触るときは、先に音を消す（[../_テンプ�
 - [x] 社内説明資料（`資料/`。スライド9枚・PDF・話す台本。2026-10-08）
 - [x] はじめての事件・今週の難問・事件簿の全日表示（2026-10-14。#0017〜#0019。GitHub Pages に反映）
 - [ ] Claude Artifact を最新の版で公開し直す（#0017〜#0019 はまだ載せていない）
-- [ ] App Store 用スクリーンショット（`ios-app/screenshots/`）と社内説明資料のスライドを、今の画面に合わせて撮り直す（ホームに「今週の難問」と、初回の「はじめての方へ」が増えた。スライドの事件簿は「直近14日」のまま）
+- [ ] App Store 用スクリーンショット（`ios-app/screenshots/`）を、今の画面に合わせて撮り直す（ホームに「今週の難問」と、初回の「はじめての方へ」が増えた）
+- [x] 社内説明資料のスライド・PDF・台本を #0019 までの内容に更新（2026-10-14）
 - [ ] スマホ実機で、はじめての事件の案内の位置（375×740 では第1話の最初の判子のボタンが下のバーに隠れる。案内の名前を押すとカードへ移動する）と、今週の難問の生成の速さを確かめる
 
 ## 今後の候補
