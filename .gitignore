@@ -7,3 +7,6 @@ ios-app/ios/App/App/public/
 DerivedData/
 *.xcuserstate
 xcuserdata/
+
+# 別アプリ（段取り名人）は別に管理する
+段取り名人/

@@ -1,6 +1,31 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "usotsuki", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8793", "--bind", "127.0.0.1"], "port": 8793 }
+    {
+      "name": "usotsuki",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8793",
+        "--bind",
+        "127.0.0.1"
+      ],
+      "port": 8793
+    },
+    {
+      "name": "dandori",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8794",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "段取り名人"
+      ],
+      "port": 8794
+    }
   ]
 }
