@@ -1,8 +1,18 @@
 {
-  "next_no": 20,
-  "total": 19,
-  "generated_at": "2026-10-14T22:55:23.705352",
+  "next_no": 21,
+  "total": 20,
+  "generated_at": "2026-10-20T23:05:51.923961",
   "documents": [
+    {
+      "no": 20,
+      "date": "2026-10-20",
+      "type": "FIX",
+      "category": "PWA",
+      "title": "Artifactの中ではアイコンとmanifestを読みに行かない",
+      "filename": "20261020_FIX_0020_PWA_Artifactの中ではアイコンとmanifestを読みに行かない.md",
+      "extension": "md",
+      "summary": "`<head>` に直接書いていた `<link rel=\"apple-touch-icon\">` と `<link rel=\"manifest\">` を、ページを直接開いたときだけ置くようにした。Claude Artifact のような iframe・sandbox の中では、ホーム画面への追加はできず、ブラウザがこの2つを読みに行くと Content Security Policy に止められ"
+    },
     {
       "no": 19,
       "date": "2026-10-14",
@@ -28,8 +38,8 @@
       "date": "2026-10-14",
       "type": "NEW",
       "category": "APP",
-      "title": "はじめての事件",
-      "filename": "20261014_NEW_0017_APP_はじめての事件.md",
+      "title": "はじめての事件",
+      "filename": "20261014_NEW_0017_APP_はじめての事件.md",
       "extension": "md",
       "summary": "初めて遊ぶ人のための、案内つきの3問「はじめての事件」を足した。第1話で判子の押し方、第2話で1人わかると次の人がわかる「つながり」、第3話で「もし嘘つきだったら」と仮に決める考え方を、盤面の上の案内を見ながら順に練習する。ミス・ヒント・時間・解決数・連続日数には数えない。推論エンジンは変えていないので、日替わり・練習・難問の問題は1つも変わらない（`VERSION` は 3 のまま）。"
     },
@@ -48,8 +58,8 @@
       "date": "2026-10-09",
       "type": "FIX",
       "category": "IOS",
-      "title": "引き渡し手順とビルド確認の見直し",
-      "filename": "20261009_FIX_0015_IOS_引き渡し手順とビルド確認の見直し.md",
+      "title": "引き渡し手順とビルド確認の見直し",
+      "filename": "20261009_FIX_0015_IOS_引き渡し手順とビルド確認の見直し.md",
       "extension": "md",
       "summary": "引き渡し手順書だけで申請まで進めるよう、点検で見つかった抜けを足した。アプリのコードは変えていない。"
     },
@@ -58,8 +68,8 @@
       "date": "2026-10-09",
       "type": "FIX",
       "category": "PWA",
-      "title": "サポートページのミスの数え方の説明",
-      "filename": "20261009_FIX_0014_PWA_サポートページのミスの数え方の説明.md",
+      "title": "サポートページのミスの数え方の説明",
+      "filename": "20261009_FIX_0014_PWA_サポートページのミスの数え方の説明.md",
       "extension": "md",
       "summary": "`support.html` のよくある質問「ミスやヒントはどう数えますか」に「同じ答えをもう一度出すことはできないので、二重には数えません」とあった。実際のアプリが止めるのは**直前に違っていた答えと同じ答え**だけで、A（誤り）→ B（誤り）→ A と出すと、A のミスは2回目も数える。#0001 の仕様（「違っていた答えと同じあいだは提出できない」）とアプリは合っていて、食い違っていたのはサ"
     },
@@ -68,8 +78,8 @@
       "date": "2026-10-09",
       "type": "BUG",
       "category": "PWA",
-      "title": "ほかのアプリにキャッシュを消されても入れ直す",
-      "filename": "20261009_BUG_0013_PWA_ほかのアプリにキャッシュを消されても入れ直す.md",
+      "title": "ほかのアプリにキャッシュを消されても入れ直す",
+      "filename": "20261009_BUG_0013_PWA_ほかのアプリにキャッシュを消されても入れ直す.md",
       "extension": "md",
       "summary": "ブラウザのキャッシュの置き場所（Cache Storage）はドメインごとに1つで、`kiyotake1229.github.io` の全アプリが共有している。同じドメインのほかのアプリ（公開中の10本: nagi-pond・mahjong・senda・sonaecho・renban・dusk-highway・goi-dojo・habit-app・task-manager・dodge-game）の"
     },
@@ -78,8 +88,8 @@
       "date": "2026-10-09",
       "type": "ENH",
       "category": "ENG",
-      "title": "エンジン検査の穴をふさぐ",
-      "filename": "20261009_ENH_0012_ENG_エンジン検査の穴をふさぐ.md",
+      "title": "エンジン検査の穴をふさぐ",
+      "filename": "20261009_ENH_0012_ENG_エンジン検査の穴をふさぐ.md",
       "extension": "md",
       "summary": "点検で、`tools/check-engine.mjs` が「エンジンが壊れても PASS してしまう」穴を9つ見つけた（指摘 #25〜#33）。今のエンジンには誤りが無いことは別の監査で確かめてあり、利用者への害は無い。ただ、決まりでは「エンジンを変えたら check-engine の PASS を確かめる」ので、この関門をすり抜ける誤りがそのまま公開されうる。検査を足して、わざと壊したエンジン"
     },
@@ -88,8 +98,8 @@
       "date": "2026-10-09",
       "type": "BUG",
       "category": "APP",
-      "title": "文字の選択と別タブでの記録の消去と読み込み直し後の戻る",
-      "filename": "20261009_BUG_0011_APP_文字の選択と別タブでの記録の消去と読み込み直し後の戻る.md",
+      "title": "文字の選択と別タブでの記録の消去と読み込み直し後の戻る",
+      "filename": "20261009_BUG_0011_APP_文字の選択と別タブでの記録の消去と読み込み直し後の戻る.md",
       "extension": "md",
       "summary": "画面の小さな不具合を3つ直した。どれもエンジンには触れていないので、日替わり問題・`VERSION` は変わらない。"
     },
@@ -98,8 +108,8 @@
       "date": "2026-10-09",
       "type": "BUG",
       "category": "APP",
-      "title": "日付をまたぐ戻るときの連続日数と事件番号",
-      "filename": "20261009_BUG_0010_APP_日付をまたぐ戻るときの連続日数と事件番号.md",
+      "title": "日付をまたぐ戻るときの連続日数と事件番号",
+      "filename": "20261009_BUG_0010_APP_日付をまたぐ戻るときの連続日数と事件番号.md",
       "extension": "md",
       "summary": "日付と連続日数のまわりで、次の3つの不具合を直した。問題の作り方（エンジン）には触れていないので、日替わり問題・`VERSION`・回帰ハッシュは変わらない。"
     },
@@ -108,8 +118,8 @@
       "date": "2026-10-08",
       "type": "FIX",
       "category": "APP",
-      "title": "Artifactの中では画像を保存を出さない",
-      "filename": "20261008_FIX_0009_APP_Artifactの中では画像を保存を出さない.md",
+      "title": "Artifactの中では画像を保存を出さない",
+      "filename": "20261008_FIX_0009_APP_Artifactの中では画像を保存を出さない.md",
       "extension": "md",
       "summary": "結果の画像の画面にある［画像を保存］は、`<a download>` のリンクで画像を保存する。Claude Artifact の中（iframe・sandbox）ではこのリンクが働かず、押しても何も起きない。Artifact の中ではこのボタンを出さないようにした。GitHub Pages・ホーム画面に追加したアプリ・PC のブラウザでは、これまでどおり出る。画像の長押し（PC は右クリック）で"
     },
@@ -118,8 +128,8 @@
       "date": "2026-10-08",
       "type": "DPL",
       "category": "ALL",
-      "title": "GitHubPagesで公開",
-      "filename": "20261008_DPL_0008_ALL_GitHubPagesで公開.md",
+      "title": "GitHubPagesで公開",
+      "filename": "20261008_DPL_0008_ALL_GitHubPagesで公開.md",
       "extension": "md",
       "summary": "このフォルダを git リポジトリにして GitHub の公開リポジトリ `kiyotake1229/usotsuki-mura` に push し、main ブランチのルートを GitHub Pages で公開した。あわせて GitHub Actions の「iOS build check」で、iOS アプリがシミュレータ向け・実機向け（署名なし）ともにビルドできることを確かめた。開発確認用の "
     },
@@ -128,8 +138,8 @@
       "date": "2026-10-08",
       "type": "BUG",
       "category": "ALL",
-      "title": "リリース前の点検で見つかった不具合の修正",
-      "filename": "20261008_BUG_0007_ALL_リリース前の点検で見つかった不具合の修正.md",
+      "title": "リリース前の点検で見つかった不具合の修正",
+      "filename": "20261008_BUG_0007_ALL_リリース前の点検で見つかった不具合の修正.md",
       "extension": "md",
       "summary": "GitHub Pages で公開する前の点検（ブラウザ QA 15件・コードレビュー 9件・統合担当の気づき）を1つずつ確かめて直した。大きいのは、難問（9人）の待ち画面で進み具合の帯が止まったままになる不具合と、提出の回数が多いと結果画面・ホーム・事件簿がはみ出す不具合、引き渡し手順書だけでは申請まで進めない（スクリーンショットが無い・難問の扱いが保留）点。確かめる途中で、画像を作っている間に結"
     },
@@ -138,8 +148,8 @@
       "date": "2026-10-08",
       "type": "NEW",
       "category": "IOS",
-      "title": "iOSアプリ化",
-      "filename": "20261008_NEW_0006_IOS_iOSアプリ化.md",
+      "title": "iOSアプリ化",
+      "filename": "20261008_NEW_0006_IOS_iOSアプリ化.md",
       "extension": "md",
       "summary": "Web アプリ本体（`index.html`）をそのまま同梱する iOS アプリのプロジェクト `ios-app/` を、`語彙力/ios-app/` を雛形に Capacitor 7 で作った。Bundle ID は `work.ltv.usotsuki`、iPhone・縦向きのみ。`index.html` が使うプラグイン（App・Haptics・LocalNotifications・Pref"
     },
@@ -158,8 +168,8 @@
       "date": "2026-10-08",
       "type": "NEW",
       "category": "APP",
-      "title": "結果の共有画像と難問モードの画面",
-      "filename": "20261008_NEW_0004_APP_結果の共有画像と難問モードの画面.md",
+      "title": "結果の共有画像と難問モードの画面",
+      "filename": "20261008_NEW_0004_APP_結果の共有画像と難問モードの画面.md",
       "extension": "md",
       "summary": "解決した結果を1枚の画像（1080×1350 の PNG）にして共有できるようにした。答え（犯人・だれが嘘つきか）は描かない。あわせて、練習に4つ目の「難問（容疑者9人）」の入口と、9人の問題を Web Worker で作る仕組み・7人以上の盤面をつめて見せる表示・名簿を足した。iOS アプリ（Capacitor）のときだけ動くネイティブ連携（触覚・記録の二重保存・毎朝の通知・裏に回ったときの時間"
     },
