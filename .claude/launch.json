@@ -26,6 +26,20 @@
         "段取り名人"
       ],
       "port": 8794
+    },
+    {
+      "name": "hosoku",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8795",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "法則ハンター"
+      ],
+      "port": 8795
     }
   ]
 }
