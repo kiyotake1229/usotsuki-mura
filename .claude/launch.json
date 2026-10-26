@@ -40,6 +40,20 @@
         "法則ハンター"
       ],
       "port": 8795
+    },
+    {
+      "name": "series",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8802",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "シリーズ紹介"
+      ],
+      "port": 8802
     }
   ]
 }
